@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/theme.dart';
+import 'package:inner_spark_app/widgets/forms/page_indicators.dart';
 
 class StartupView extends StatelessWidget {
   const StartupView({super.key});
@@ -106,7 +107,7 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
   static const tipsCount = 3;
   static const swipeDelay = 5.0;
 
-  int _currentPage = 0;
+  int _currentTip = 0;
   late PageController _pageController;
   late Timer _timer;
 
@@ -118,7 +119,7 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
     _pageController.addListener(() {
       setState(() {
         if (_pageController.page != null) {
-          _currentPage = _pageController.page!.round();
+          _currentTip = _pageController.page!.round();
         }
       });
     });
@@ -127,7 +128,7 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
       Duration(milliseconds: (swipeDelay * 1000.0).floor()),
       (_) => setState(() {
         _pageController.animateToPage(
-          (_currentPage + 1) % tipsCount,
+          (_currentTip + 1) % tipsCount,
           duration: Durations.short3,
           curve: Curves.ease
         );
@@ -157,11 +158,10 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
             )
           ),
           const SizedBox(height: 8.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: Iterable.generate(
-              tipsCount, (i) => _buildTipIndicator(i, theme.colorScheme)
-            ).toList(),
+          PageIndicators(
+            pagesCount: tipsCount,
+            page: _currentTip,
+            color: theme.colorScheme.background,
           )
       ],
     );
@@ -181,22 +181,6 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
           style: textTheme.bodyMedium
         ).tr()
       ],
-    );
-  }
-
-  Widget _buildTipIndicator(int index, ColorScheme colorScheme) {
-    return AnimatedSwitcher(
-      duration: Durations.short3,
-      child: TabPageSelectorIndicator(
-        key: ValueKey((index, _currentPage == index)),
-        backgroundColor: (
-          _currentPage == index ?
-          colorScheme.background :
-          Colors.transparent
-        ),
-        borderColor: colorScheme.background,
-        size: 12.0,
-      ),
     );
   }
 }

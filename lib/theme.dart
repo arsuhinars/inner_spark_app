@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const primaryColor = Color.fromARGB(255, 178, 224, 30);
 const secondaryColor = Color.fromARGB(255, 200, 187, 243);
 const onBackground = Color.fromARGB(255, 237, 237, 237);
+const darkColor = Color.fromARGB(255, 75, 71, 71);
 
 /* Flutter theme objects */
 final colorScheme = ColorScheme.fromSeed(
@@ -43,6 +44,19 @@ final backgroundButton = FilledButton.styleFrom(
 final onBackgroundButton = FilledButton.styleFrom(
   backgroundColor: onBackground,
   foregroundColor: colorScheme.onBackground,
+  padding: const EdgeInsets.symmetric(
+    vertical: 18.0, horizontal: 36.0
+  )
+);
+final darkButton = FilledButton.styleFrom(
+  backgroundColor: darkColor,
+  foregroundColor: colorScheme.onPrimary,
+  padding: const EdgeInsets.symmetric(
+    vertical: 18.0, horizontal: 36.0
+  )
+);
+final darkOutlinedButton = OutlinedButton.styleFrom(
+  foregroundColor: darkColor,
   padding: const EdgeInsets.symmetric(
     vertical: 18.0, horizontal: 36.0
   )

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/utils/validators.dart';
 
@@ -38,7 +39,7 @@ class _SignupEmailViewBody extends StatelessWidget {
             textAlign: TextAlign.center,
             style: textTheme.titleLarge
           ).tr(),
-          _buildForm(textTheme),
+          _buildForm(context, textTheme),
           Text(
             'shared.terms_of_service_agreement',
             style: textTheme.bodySmall,
@@ -49,7 +50,7 @@ class _SignupEmailViewBody extends StatelessWidget {
     );
   }
 
-  Widget _buildForm(TextTheme textTheme) {
+  Widget _buildForm(BuildContext context, TextTheme textTheme) {
     return Form(
       key: _signupFormKey,
       child: Column(
@@ -89,7 +90,7 @@ class _SignupEmailViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           FilledButton(
-            onPressed: () => _onSignupPressed(),
+            onPressed: () => _onSignupPressed(context),
             style: primaryButton,
             child: const Text('shared.signup').tr()
           )
@@ -98,7 +99,9 @@ class _SignupEmailViewBody extends StatelessWidget {
     );
   }
 
-  void _onSignupPressed() {
-    _signupFormKey.currentState!.validate();
+  void _onSignupPressed(BuildContext context) {
+    if (_signupFormKey.currentState!.validate()) {
+      context.push('/signup/profile');
+    }
   }
 }

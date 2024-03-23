@@ -26,6 +26,15 @@ signup:
   title_2: InnerSpark
   already_signup: Already have an account?
 
+  goal:
+    title: WHAT IS YOUR FITNESS GOAL?
+    goal_1: I want to be active
+    goal_2: I want to be strong
+    goal_3: I want to lose weight
+  
+  gender:
+    title: WHAT IS YOUR GENDER?
+
 
 login:
   title: LOG IN
@@ -41,6 +50,8 @@ shared:
   signup_phone: SIGN UP WITH PHONE
   signup_email: SIGN UP WITH EMAIL
   signup_google: SIGN UP WITH GOOGLE
+  skip: SKIP
+  continue: CONTINUE
 
   name_field_label: YOUR NAME
   email_field_label: YOUR EMAIL ADDRESS
@@ -48,6 +59,9 @@ shared:
 
   terms_of_service_agreement: >
     By continuing you agree to accept our Terms of Service & Privacy Policy
+
+  gender_male: I am Male
+  gender_female: I am Female
 
 
 validation:
