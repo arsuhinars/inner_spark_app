@@ -1,0 +1,49 @@
+startup:
+  title: InnerSpark
+  tips:
+    "0":
+      title: WORKOUTS
+      body: >
+        Embrace the strength within as you embark on a journey of self-discovery
+        through invigorating workouts. Fuel your body and find harmony in every
+        movement.
+    "1":
+      title: WORKOUTS
+      body: >
+        Embrace the strength within as you embark on a journey of self-discovery
+        through invigorating workouts. Fuel your body and find harmony in every
+        movement.
+    "2":
+      title: WORKOUTS
+      body: >
+        Embrace the strength within as you embark on a journey of self-discovery
+        through invigorating workouts. Fuel your body and find harmony in every
+        movement.
+
+
+signup:
+  title_1: Welcome to
+  title_2: InnerSpark
+  already_signup: Already have an account?
+
+
+login:
+  title: LOG IN
+  email_field_label: YOUR EMAIL ADDRESS
+  password_field_label: YOUR PASSWORD
+
+
+shared:
+  login: LOG IN
+  signup: SIGN UP
+  signup_phone: SIGN UP WITH PHONE
+  signup_email: SIGN UP WITH EMAIL
+  signup_google: SIGN UP WITH GOOGLE
+  terms_of_service_agreement: >
+    By continuing you agree to accept our Terms of Service & Privacy Policy
+
+
+validation:
+  empty_field: This field is required
+  invalid_email: Invalid email address
+  too_short_password: Password must contain at least {} characters
