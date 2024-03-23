@@ -136,15 +136,15 @@ class _SignupViewBody extends StatelessWidget {
   }
 
   void _onSignupByPhonePressed(BuildContext context) {
-    context.push('/signup_phone');
+    context.push('/signup/phone');
   }
 
   void _onSignupByEmailPressed(BuildContext context) {
-    context.push('/signup_email');
+    context.push('/signup/email');
   }
 
   void _onSignupByGooglePressed(BuildContext context) {
-    context.push('/signup_google');
+    context.push('/signup/google');
   }
 
   void _onLoginPressed(BuildContext context) {

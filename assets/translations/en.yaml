@@ -29,8 +29,10 @@ signup:
 
 login:
   title: LOG IN
-  email_field_label: YOUR EMAIL ADDRESS
-  password_field_label: YOUR PASSWORD
+
+
+signup_email:
+  title: SIGN UP WITH EMAIL
 
 
 shared:
@@ -39,6 +41,11 @@ shared:
   signup_phone: SIGN UP WITH PHONE
   signup_email: SIGN UP WITH EMAIL
   signup_google: SIGN UP WITH GOOGLE
+
+  name_field_label: YOUR NAME
+  email_field_label: YOUR EMAIL ADDRESS
+  password_field_label: YOUR PASSWORD
+
   terms_of_service_agreement: >
     By continuing you agree to accept our Terms of Service & Privacy Policy
 

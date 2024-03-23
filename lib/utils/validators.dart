@@ -28,3 +28,11 @@ String? passwordValidator(String? value) {
 
   return null;
 }
+
+String? nonEmptyValidator(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'validation.empty_field'.tr();
+  }
+
+  return null;
+}

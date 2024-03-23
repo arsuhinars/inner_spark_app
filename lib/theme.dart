@@ -22,6 +22,13 @@ final themeData = ThemeData(
 );
 
 /* Buttons style */
+final primaryButton = FilledButton.styleFrom(
+  backgroundColor: colorScheme.primary,
+  foregroundColor: colorScheme.onPrimary,
+  padding: const EdgeInsets.symmetric(
+    vertical: 18.0, horizontal: 36.0
+  )
+);
 final secondaryButton = FilledButton.styleFrom(
   backgroundColor: colorScheme.secondary,
   foregroundColor: colorScheme.onSecondary,

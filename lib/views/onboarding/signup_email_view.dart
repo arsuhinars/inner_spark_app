@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/utils/validators.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignupEmailView extends StatelessWidget {
+  const SignupEmailView({super.key});
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: _LoginViewBody(),
+      body: _SignupEmailViewBody(),
     );
   }
 }
 
-class _LoginViewBody extends StatelessWidget {
-  _LoginViewBody();
+class _SignupEmailViewBody extends StatelessWidget {
+  _SignupEmailViewBody();
 
-  final _loginFormKey = GlobalKey<FormState>();
+  final _signupFormKey = GlobalKey<FormState>();
   
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _LoginViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'login.title',
+            'signup_email.title',
             textAlign: TextAlign.center,
             style: textTheme.titleLarge
           ).tr(),
@@ -51,10 +51,21 @@ class _LoginViewBody extends StatelessWidget {
 
   Widget _buildForm(TextTheme textTheme) {
     return Form(
-      key: _loginFormKey,
+      key: _signupFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Text(
+            'shared.name_field_label',
+            style: textTheme.labelMedium
+          ).tr(),
+          const SizedBox(height: 8.0),
+          TextFormField(
+            decoration: formInputDecoration.copyWith(),
+            keyboardType: TextInputType.text,
+            validator: nonEmptyValidator,
+          ),
+          const SizedBox(height: 16.0),
           Text(
             'shared.email_field_label',
             style: textTheme.labelMedium
@@ -78,16 +89,16 @@ class _LoginViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           FilledButton(
-            onPressed: () => _onLoginPressed(),
-            style: secondaryButton,
-            child: const Text('shared.login').tr()
+            onPressed: () => _onSignupPressed(),
+            style: primaryButton,
+            child: const Text('shared.signup').tr()
           )
         ],
       )
     );
   }
 
-  void _onLoginPressed() {
-    _loginFormKey.currentState!.validate();
+  void _onSignupPressed() {
+    _signupFormKey.currentState!.validate();
   }
 }
