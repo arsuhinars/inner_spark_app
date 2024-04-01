@@ -1,0 +1,93 @@
+startup:
+  title: InnerSpark
+  tips:
+    "0":
+      title: WORKOUTS
+      body: >
+        Embrace the strength within as you embark on a journey of self-discovery
+        through invigorating workouts. Fuel your body and find harmony in every
+        movement.
+    "1":
+      title: MEDIATIONS
+      body: >
+        In the tranquil sanctuary of your mind, find solace and serenity. Let
+        each breath be a reminder of your inner light. Through mindfulness,
+        unlock the path to inner peace and self-love.
+    "2":
+      title: MOOD TRACKER
+      body: >
+        Track the rhythm of your emotions, for they are the waves that shape
+        your journey. Embrace balance, for within it lies the key to self-love
+        and well-being.
+
+
+signup:
+  title_1: Welcome to
+  title_2: InnerSpark
+  already_signup: Already have an account?
+
+tabs:
+  goal:
+    title: WHAT IS YOUR FITNESS GOAL?
+    goal_1: I want to be active
+    goal_2: I want to be strong
+    goal_3: I want to lose weight
+  
+  gender:
+    title: WHAT IS YOUR GENDER?
+    male: I am Male
+    female: I am Female
+  
+  age:
+    title: WHAT IS YOUR AGE?
+  
+  level:
+    title: HOW WOULD YOU RATE YOUR FITNESS LEVEL?
+    level_0: Novice
+    level_1: Beginner
+    level_2: Intermediate
+    level_3: Advanced
+    level_4: Athlete
+
+  preferences:
+    title: DO YOU HAVE SPECIFIC EXERCISE PREFERENCE?
+    option_0: Jogging
+    option_1: Walking
+    option_2: Weightlift
+    option_3: Cardio
+    option_4: Yoga
+    option_5: Other
+
+
+login:
+  title: LOG IN
+
+
+signup_email:
+  title: SIGN UP WITH EMAIL
+
+
+shared:
+  login: LOG IN
+  signup: SIGN UP
+  signup_phone: SIGN UP WITH PHONE
+  signup_email: SIGN UP WITH EMAIL
+  signup_google: SIGN UP WITH GOOGLE
+  skip: SKIP
+  continue: CONTINUE
+
+  name_field_label: YOUR NAME
+  email_field_label: YOUR EMAIL ADDRESS
+  password_field_label: YOUR PASSWORD
+
+  terms_of_service_agreement: >
+    By continuing you agree to accept our Terms of Service & Privacy Policy
+
+  gender_male: I am Male
+  gender_female: I am Female
+
+
+validation:
+  empty_field: This field is required
+  invalid_email: Invalid email address
+  too_short_password: Password must contain at least {} characters

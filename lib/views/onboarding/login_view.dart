@@ -11,6 +11,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: _LoginViewBody(),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

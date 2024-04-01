@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:inner_spark_app/widgets/forms/radio_tile.dart';
+import 'package:inner_spark_app/widgets/radio_tile.dart';
 
 class SelectGoalTab extends StatefulWidget {
   const SelectGoalTab({super.key});
@@ -21,7 +21,7 @@ class _SelectGoalTabState extends State<SelectGoalTab> {
     return Column(
       children: [
         Text(
-          'signup.goal.title',
+          'tabs.goal.title',
           textAlign: TextAlign.center,
           style: theme.textTheme.titleLarge
         ).tr(),
@@ -40,25 +40,38 @@ class _SelectGoalTabState extends State<SelectGoalTab> {
           value: 0,
           groupValue: _optionIndex,
           onChanged: _onOptionChanged,
-          icon: const Icon(Icons.hiking_outlined),
-          title: const Text('signup.goal.goal_1').tr(),
+          child: _buildRadioTileBody(
+            Icons.hiking_outlined, 'tabs.goal.goal_1'.tr()
+          )
         ),
         const SizedBox(height: 8.0),
         RadioTile(
           value: 1,
           groupValue: _optionIndex,
           onChanged: _onOptionChanged,
-          icon: const Icon(Icons.fitness_center),
-          title: const Text('signup.goal.goal_2').tr(),
+          child: _buildRadioTileBody(
+            Icons.fitness_center, 'tabs.goal.goal_2'.tr()
+          )
         ),
         const SizedBox(height: 8.0),
         RadioTile(
           value: 2,
           groupValue: _optionIndex,
           onChanged: _onOptionChanged,
-          icon: const Icon(Icons.monitor_weight_outlined),
-          title: const Text('signup.goal.goal_3').tr(),
+          child: _buildRadioTileBody(
+            Icons.monitor_weight_outlined, 'tabs.goal.goal_3'.tr()
+          )
         ),
+      ],
+    );
+  }
+
+  Widget _buildRadioTileBody(IconData icon, String text) {
+    return Row(
+      children: [
+        Icon(icon),
+        const SizedBox(width: 8.0),
+        Expanded(child: Text(text)),
       ],
     );
   }

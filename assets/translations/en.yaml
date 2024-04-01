@@ -8,17 +8,17 @@ startup:
         through invigorating workouts. Fuel your body and find harmony in every
         movement.
     "1":
-      title: WORKOUTS
+      title: MEDIATIONS
       body: >
-        Embrace the strength within as you embark on a journey of self-discovery
-        through invigorating workouts. Fuel your body and find harmony in every
-        movement.
+        In the tranquil sanctuary of your mind, find solace and serenity. Let
+        each breath be a reminder of your inner light. Through mindfulness,
+        unlock the path to inner peace and self-love.
     "2":
-      title: WORKOUTS
+      title: MOOD TRACKER
       body: >
-        Embrace the strength within as you embark on a journey of self-discovery
-        through invigorating workouts. Fuel your body and find harmony in every
-        movement.
+        Track the rhythm of your emotions, for they are the waves that shape
+        your journey. Embrace balance, for within it lies the key to self-love
+        and well-being.
 
 
 signup:
@@ -26,6 +26,7 @@ signup:
   title_2: InnerSpark
   already_signup: Already have an account?
 
+tabs:
   goal:
     title: WHAT IS YOUR FITNESS GOAL?
     goal_1: I want to be active
@@ -34,6 +35,28 @@ signup:
   
   gender:
     title: WHAT IS YOUR GENDER?
+    male: I am Male
+    female: I am Female
+  
+  age:
+    title: WHAT IS YOUR AGE?
+  
+  level:
+    title: HOW WOULD YOU RATE YOUR FITNESS LEVEL?
+    level_0: Novice
+    level_1: Beginner
+    level_2: Intermediate
+    level_3: Advanced
+    level_4: Athlete
+
+  preferences:
+    title: DO YOU HAVE SPECIFIC EXERCISE PREFERENCE?
+    option_0: Jogging
+    option_1: Walking
+    option_2: Weightlift
+    option_3: Cardio
+    option_4: Yoga
+    option_5: Other
 
 
 login:

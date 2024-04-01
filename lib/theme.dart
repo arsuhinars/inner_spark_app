@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inner_spark_app/models/styles/radio_tile_style.dart';
 
 /* Defines */
 const primaryColor = Color.fromARGB(255, 178, 224, 30);
@@ -14,12 +15,67 @@ final colorScheme = ColorScheme.fromSeed(
   secondary: secondaryColor
 );
 
+/* Text styles */
 const textTheme = Typography.blackMountainView;
 
-/* App theme */
-final themeData = ThemeData(
-  colorScheme: colorScheme,
-  textTheme: textTheme
+final darkTextStyle = textTheme.bodyMedium!.copyWith(color: darkColor);
+
+/* Icon themes */
+const iconTheme = IconThemeData(color: Colors.black);
+const darkIconTheme = IconThemeData(color: darkColor);
+
+/* Radio tile styles */
+final primaryRadioTileStyle = RadioTileStyle(
+  padding: const EdgeInsets.symmetric(
+    vertical: 8.0, horizontal: 16.0
+  ),
+  normalColor: onBackground,
+  selectedColor: onBackground.withAlpha(0),
+  radioColor: primaryColor,
+  textStyle: darkTextStyle,
+  selectedTextStyle: darkTextStyle,
+  iconTheme: darkIconTheme,
+  selectedIconTheme: darkIconTheme,
+  shape: RoundedRectangleBorder(
+    side: const BorderSide(
+      color: primaryColor,
+      width: 0.0,
+      style: BorderStyle.none,
+      strokeAlign: BorderSide.strokeAlignInside
+    ),
+    borderRadius: BorderRadius.circular(16.0)
+  ),
+  selectedShape: RoundedRectangleBorder(
+    side: const BorderSide(
+      color: primaryColor,
+      width: 6.0,
+      style: BorderStyle.solid,
+      strokeAlign: BorderSide.strokeAlignInside
+    ),
+    borderRadius: BorderRadius.circular(16.0)
+  ),
+);
+final secondaryRadioTileStyle = RadioTileStyle(
+  padding: const EdgeInsets.all(16.0),
+  normalColor: onBackground,
+  selectedColor: secondaryColor,
+  radioColor: darkColor,
+  textStyle: darkTextStyle,
+  selectedTextStyle: darkTextStyle.copyWith(color: colorScheme.onSecondary),
+  iconTheme: darkIconTheme,
+  selectedIconTheme: iconTheme.copyWith(color: Colors.white),
+  shape: RoundedRectangleBorder(
+    side: const BorderSide(
+      style: BorderStyle.none
+    ),
+    borderRadius: BorderRadius.circular(16.0)
+  ),
+  selectedShape: RoundedRectangleBorder(
+    side: const BorderSide(
+      style: BorderStyle.none
+    ),
+    borderRadius: BorderRadius.circular(16.0)
+  ),
 );
 
 /* Buttons style */
@@ -84,4 +140,14 @@ final formInputDecoration = InputDecoration(
   contentPadding: const EdgeInsets.symmetric(
     vertical: 8.0, horizontal: 16.0
   ),
+);
+
+/* App theme */
+final themeData = ThemeData(
+  colorScheme: colorScheme,
+  textTheme: textTheme,
+  iconTheme: iconTheme,
+  extensions: [
+    primaryRadioTileStyle
+  ]
 );

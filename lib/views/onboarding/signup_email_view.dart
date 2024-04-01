@@ -12,6 +12,7 @@ class SignupEmailView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: _SignupEmailViewBody(),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

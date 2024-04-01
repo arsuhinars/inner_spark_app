@@ -1,10 +1,8 @@
-import 'dart:async';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/theme.dart';
-import 'package:inner_spark_app/widgets/forms/page_indicators.dart';
+import 'package:inner_spark_app/widgets/page_indicators.dart';
 
 class StartupView extends StatelessWidget {
   const StartupView({super.key});
@@ -105,11 +103,9 @@ class _StartupViewTips extends StatefulWidget {
 
 class _StartupViewTipsState extends State<_StartupViewTips> {
   static const tipsCount = 3;
-  static const swipeDelay = 5.0;
 
   int _currentTip = 0;
   late PageController _pageController;
-  late Timer _timer;
 
   @override
   void initState() {
@@ -123,25 +119,8 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
         }
       });
     });
-
-    _timer = Timer.periodic(
-      Duration(milliseconds: (swipeDelay * 1000.0).floor()),
-      (_) => setState(() {
-        _pageController.animateToPage(
-          (_currentTip + 1) % tipsCount,
-          duration: Durations.short3,
-          curve: Curves.ease
-        );
-      })
-    );
   }
 
-  @override
-  void dispose() {
-    _timer.cancel();
-
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

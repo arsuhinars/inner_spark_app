@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:inner_spark_app/widgets/tabs/select_gender_tab.dart';
-import 'package:inner_spark_app/widgets/tabs/select_goal_tab.dart';
-import 'package:inner_spark_app/widgets/forms/skip_continue_buttons.dart';
+import 'package:inner_spark_app/widgets/forms/select_age_tab.dart';
+import 'package:inner_spark_app/widgets/forms/select_gender_tab.dart';
+import 'package:inner_spark_app/widgets/forms/select_goal_tab.dart';
+import 'package:inner_spark_app/widgets/forms/select_preferences_tab.dart';
+import 'package:inner_spark_app/widgets/skip_continue_buttons.dart';
+import 'package:inner_spark_app/widgets/forms/select_level_tab.dart';
 
 class SignupProfileView extends StatefulWidget {
   const SignupProfileView({super.key});
@@ -30,6 +33,7 @@ class _SignupProfileViewState extends State<SignupProfileView> with SingleTicker
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(),
+      resizeToAvoidBottomInset: false,
     );
   }
 
@@ -48,7 +52,7 @@ class _SignupProfileViewState extends State<SignupProfileView> with SingleTicker
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(
-        16.0, 80.0, 16.0, 40.0
+        16.0, 48.0, 16.0, 24.0
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,12 +81,13 @@ class _SignupProfileViewState extends State<SignupProfileView> with SingleTicker
   Widget _buildTabBarView() {
     return TabBarView(
       controller: _tabController,
+      physics: const NeverScrollableScrollPhysics(),
       children: const [
         SelectGoalTab(),
         SelectGenderTab(),
-        Column(),
-        Column(),
-        Column()
+        SelectAgeTab(),
+        SelectLevelTab(),
+        SelectPreferencesTab()
       ]
     );
   }
