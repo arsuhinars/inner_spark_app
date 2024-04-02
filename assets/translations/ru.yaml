@@ -29,34 +29,18 @@ signup:
 tabs:
   goal:
     title: WHAT IS YOUR FITNESS GOAL?
-    goal_1: I want to be active
-    goal_2: I want to be strong
-    goal_3: I want to lose weight
   
   gender:
     title: WHAT IS YOUR GENDER?
-    male: I am Male
-    female: I am Female
   
   age:
     title: WHAT IS YOUR AGE?
   
   level:
     title: HOW WOULD YOU RATE YOUR FITNESS LEVEL?
-    level_0: Novice
-    level_1: Beginner
-    level_2: Intermediate
-    level_3: Advanced
-    level_4: Athlete
 
   preferences:
     title: DO YOU HAVE SPECIFIC EXERCISE PREFERENCE?
-    option_0: Jogging
-    option_1: Walking
-    option_2: Weightlift
-    option_3: Cardio
-    option_4: Yoga
-    option_5: Other
 
 
 login:
@@ -85,6 +69,26 @@ shared:
 
   gender_male: I am Male
   gender_female: I am Female
+
+  goals:
+    be_active: I want to be active
+    be_strong: I want to be strong
+    lose_weight: I want to lose weight
+
+  fitness_levels:
+    novice: Novice
+    beginner: Beginner
+    intermediate: Intermediate
+    advanced: Advanced
+    athlete: Athlete
+  
+  exercise_preferences:
+    jogging: Jogging
+    walking: Walking
+    weightlift: Weightlift
+    cardio: Cardio
+    yoga: Yoga
+    other: Other
 
 
 validation:

@@ -1,30 +1,41 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:inner_spark_app/widgets/forms/select_age_tab.dart';
-import 'package:inner_spark_app/widgets/forms/select_gender_tab.dart';
-import 'package:inner_spark_app/widgets/forms/select_goal_tab.dart';
-import 'package:inner_spark_app/widgets/forms/select_preferences_tab.dart';
+import 'package:inner_spark_app/models/user.dart';
+import 'package:inner_spark_app/widgets/fields/select_age_field.dart';
+import 'package:inner_spark_app/widgets/fields/select_gender_field.dart';
+import 'package:inner_spark_app/widgets/fields/select_goal_field.dart';
+import 'package:inner_spark_app/widgets/fields/select_level_field.dart';
+import 'package:inner_spark_app/widgets/fields/select_preferences_field.dart';
 import 'package:inner_spark_app/widgets/skip_continue_buttons.dart';
-import 'package:inner_spark_app/widgets/forms/select_level_tab.dart';
 
 class SignupProfileView extends StatefulWidget {
   const SignupProfileView({super.key});
-  
+
   @override
   State<StatefulWidget> createState() {
     return _SignupProfileViewState();
   }
 }
 
-class _SignupProfileViewState extends State<SignupProfileView> with SingleTickerProviderStateMixin {
+class _SignupProfileViewState extends State<SignupProfileView>
+    with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+
+  var _goal = UserGoal.beActive;
+  var _gender = Gender.female;
+  var _age = 18;
+  var _level = FitnessLevel.novice;
+  var _preference = ExercisePreference.jogging;
 
   @override
   void initState() {
     super.initState();
 
     _tabController = TabController(
-      length: 5, vsync: this, animationDuration: Durations.short2
+      length: 5,
+      vsync: this,
+      animationDuration: Durations.short2,
     );
   }
 
@@ -42,18 +53,16 @@ class _SignupProfileViewState extends State<SignupProfileView> with SingleTicker
       automaticallyImplyLeading: false,
       leading: IconButton(
         onPressed: _onBackButtonPressed,
-        icon: const Icon(Icons.arrow_back)
+        icon: const Icon(Icons.arrow_back),
       ),
     );
   }
-  
+
   Widget _buildBody() {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        16.0, 48.0, 16.0, 24.0
-      ),
+      padding: const EdgeInsets.fromLTRB(16.0, 48.0, 16.0, 24.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,10 +78,10 @@ class _SignupProfileViewState extends State<SignupProfileView> with SingleTicker
             children: [
               TabPageSelector(
                 controller: _tabController,
-                selectedColor: colorScheme.primary
+                selectedColor: colorScheme.primary,
               ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -82,13 +91,45 @@ class _SignupProfileViewState extends State<SignupProfileView> with SingleTicker
     return TabBarView(
       controller: _tabController,
       physics: const NeverScrollableScrollPhysics(),
-      children: const [
-        SelectGoalTab(),
-        SelectGenderTab(),
-        SelectAgeTab(),
-        SelectLevelTab(),
-        SelectPreferencesTab()
-      ]
+      children: [
+        _SignupProfileTab(
+          titleText: 'tabs.goal.title'.tr(),
+          body: SelectGoalField(
+            goal: _goal,
+            onValueChanged: (goal) => setState(() => _goal = goal),
+          ),
+        ),
+        _SignupProfileTab(
+          titleText: 'tabs.gender.title'.tr(),
+          body: SelectGenderField(
+            gender: _gender,
+            onValueChanged: (gender) => setState(() => _gender = gender),
+          ),
+        ),
+        _SignupProfileTab(
+          titleText: 'tabs.age.title'.tr(),
+          body: SelectAgeField(
+            age: _age,
+            onValueChanged: (age) => setState(() => _age = age),
+          ),
+        ),
+        _SignupProfileTab(
+          titleText: 'tabs.level.title'.tr(),
+          body: SelectLevelField(
+            fitnessLevel: _level,
+            onValueChanged: (level) => setState(() => _level = level),
+          ),
+        ),
+        _SignupProfileTab(
+          titleText: 'tabs.preferences.title'.tr(),
+          body: SelectPreferencesField(
+            preference: _preference,
+            onValueChanged: (preference) => setState(
+              () => _preference = preference,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -114,5 +155,31 @@ class _SignupProfileViewState extends State<SignupProfileView> with SingleTicker
     } else {
       _tabController.animateTo(_tabController.index + 1);
     }
+  }
+}
+
+class _SignupProfileTab extends StatelessWidget {
+  const _SignupProfileTab({
+    required this.titleText,
+    required this.body,
+  });
+
+  final String titleText;
+  final Widget body;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Column(
+      children: [
+        Text(
+          titleText,
+          textAlign: TextAlign.center,
+          style: theme.textTheme.titleLarge,
+        ),
+        Expanded(child: Center(child: body)),
+      ],
+    );
   }
 }
