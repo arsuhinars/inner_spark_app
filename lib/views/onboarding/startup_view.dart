@@ -1,17 +1,19 @@
+import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/widgets/page_indicators.dart';
 
 class StartupView extends StatelessWidget {
   const StartupView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: _StartupViewBody()
-    );
+    return const Scaffold(body: _StartupViewBody());
   }
 }
 
@@ -26,6 +28,7 @@ class _StartupViewBody extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         _buildBackground(theme.colorScheme),
+        _buildImage(),
         _buildContent(context, theme.textTheme, theme.colorScheme)
       ],
     );
@@ -39,26 +42,30 @@ class _StartupViewBody extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
-          colors: [
-            colorScheme.secondary, colorScheme.background
-          ]
-        )
+          colors: [colorScheme.secondary, colorScheme.background],
+        ),
       ),
     );
   }
 
-  Widget _buildContent(BuildContext context, TextTheme textTheme, ColorScheme colorScheme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 80.0, horizontal: 16.0
+  Widget _buildImage() {
+    return SizedBox.expand(
+      child: Image.asset(
+        'assets/images/startup_background.png',
+        fit: BoxFit.contain,
       ),
+    );
+  }
+
+  Widget _buildContent(
+      BuildContext context, TextTheme textTheme, ColorScheme colorScheme) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Expanded(
-            child: Text(
-              'startup.title', style: titleStyle
-            ).tr(),
+            child: Text('startup.title', style: titleStyle).tr(),
           ),
           const _StartupViewTips(),
           const SizedBox(height: 64.0),
@@ -121,28 +128,40 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Column(
       children: [
-        SizedBox(
-            height: 128.0,
-            child: PageView.builder(
-              itemCount: tipsCount,
-              controller: _pageController,
-              itemBuilder: (context, index) => _buildTip(index, theme.textTheme),
-            )
-          ),
-          const SizedBox(height: 8.0),
-          PageIndicators(
-            pagesCount: tipsCount,
-            page: _currentTip,
-            color: theme.colorScheme.background,
-          )
+        _buildTipsContainer(theme.textTheme),
+        const SizedBox(height: 8.0),
+        PageIndicators(
+          pagesCount: tipsCount,
+          page: _currentTip,
+          color: theme.colorScheme.background,
+        )
       ],
+    );
+  }
+
+  Widget _buildTipsContainer(TextTheme textTheme) {
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        child: Container(
+          height: 128.0,
+          decoration: BoxDecoration(
+            color: darkColor.withAlpha(30),
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+          child: PageView.builder(
+            itemCount: tipsCount,
+            controller: _pageController,
+            itemBuilder: (context, index) => _buildTip(index, textTheme),
+          ),
+        ),
+      ),
     );
   }
 
@@ -157,7 +176,7 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
         Text(
           'startup.tips.$index.body',
           textAlign: TextAlign.center,
-          style: textTheme.bodyMedium
+          style: textTheme.bodyMedium,
         ).tr()
       ],
     );
