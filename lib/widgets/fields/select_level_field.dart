@@ -11,7 +11,7 @@ class SelectLevelField extends StatelessWidget {
     required this.onValueChanged,
   });
 
-  final FitnessLevel fitnessLevel;
+  final FitnessLevel? fitnessLevel;
   final void Function(FitnessLevel) onValueChanged;
 
   @override

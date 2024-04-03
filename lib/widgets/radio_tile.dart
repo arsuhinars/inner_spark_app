@@ -14,17 +14,17 @@ class RadioTile<T> extends StatelessWidget {
 
   final Widget child;
   final T value;
-  final T groupValue;
+  final T? groupValue;
   final void Function(T?) onChanged;
   final bool addRadio;
   final RadioTileStyle? style;
-  
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       tween: Tween(end: value == groupValue ? 1.0 : 0.0),
       duration: Durations.short1,
-      builder: (context, value, child) => _buildMaterial(value, context)
+      builder: (context, value, child) => _buildMaterial(value, context),
     );
   }
 
@@ -42,48 +42,36 @@ class RadioTile<T> extends StatelessWidget {
         child: Padding(
           padding: style!.padding,
           child: IconTheme(
-            data: IconThemeData.lerp(style.iconTheme, style.selectedIconTheme, isSelected),
-            child: DefaultTextStyle(
-              style: TextStyle.lerp(style.textStyle, style.selectedTextStyle, isSelected)!,
-              child: _buildBody(style)
+            data: IconThemeData.lerp(
+              style.iconTheme,
+              style.selectedIconTheme,
+              isSelected,
             ),
-          )
+            child: DefaultTextStyle(
+              style: TextStyle.lerp(
+                style.textStyle,
+                style.selectedTextStyle,
+                isSelected,
+              )!,
+              child: _buildBody(style),
+            ),
+          ),
         ),
       ),
     );
   }
 
   Widget _buildBody(RadioTileStyle style) {
-    return Row(
-      children: [
-        Expanded(child: child),
-        if (addRadio)
-          const SizedBox(width: 8.0),
-        if (addRadio)
-          Radio(
-            value: value,
-            groupValue: groupValue,
-            onChanged: onChanged,
-            activeColor: style.radioColor,
-          ),
-      ]
-    );
+    return Row(children: [
+      Expanded(child: child),
+      if (addRadio) const SizedBox(width: 8.0),
+      if (addRadio)
+        Radio(
+          value: value,
+          groupValue: groupValue,
+          onChanged: onChanged,
+          activeColor: style.radioColor,
+        ),
+    ]);
   }
-
-  // Widget _buildBody() {
-  //   return Row(
-  //     children: [
-  //       icon,
-  //       const SizedBox(width: 8.0),
-  //       Expanded(child: title),
-  //       const SizedBox(width: 8.0),
-  //       Radio(
-  //         value: value,
-  //         groupValue: groupValue,
-  //         onChanged: onChanged,
-  //         activeColor: color,
-  //       )
-  //     ],
-  //   );
-  // }
 }

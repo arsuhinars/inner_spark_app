@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/models/user.dart';
 import 'package:inner_spark_app/widgets/fields/select_age_field.dart';
@@ -9,24 +10,18 @@ import 'package:inner_spark_app/widgets/fields/select_level_field.dart';
 import 'package:inner_spark_app/widgets/fields/select_preferences_field.dart';
 import 'package:inner_spark_app/widgets/skip_continue_buttons.dart';
 
-class SignupProfileView extends StatefulWidget {
+class SignupProfileView extends ConsumerStatefulWidget {
   const SignupProfileView({super.key});
 
   @override
-  State<StatefulWidget> createState() {
+  ConsumerState<ConsumerStatefulWidget> createState() {
     return _SignupProfileViewState();
   }
 }
 
-class _SignupProfileViewState extends State<SignupProfileView>
+class _SignupProfileViewState extends ConsumerState<SignupProfileView>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
-
-  var _goal = UserGoal.beActive;
-  var _gender = Gender.female;
-  var _age = 18;
-  var _level = FitnessLevel.novice;
-  var _preference = ExercisePreference.jogging;
 
   @override
   void initState() {
@@ -88,6 +83,9 @@ class _SignupProfileViewState extends State<SignupProfileView>
   }
 
   Widget _buildTabBarView() {
+    final user = ref.watch(userNotifierProvider)!;
+    final userNotifier = ref.read(userNotifierProvider.notifier);
+
     return TabBarView(
       controller: _tabController,
       physics: const NeverScrollableScrollPhysics(),
@@ -95,37 +93,45 @@ class _SignupProfileViewState extends State<SignupProfileView>
         _SignupProfileTab(
           titleText: 'tabs.goal.title'.tr(),
           body: SelectGoalField(
-            goal: _goal,
-            onValueChanged: (goal) => setState(() => _goal = goal),
+            goal: user.goal,
+            onValueChanged: (goal) => userNotifier.update(
+              user.copyWith(goal: goal),
+            ),
           ),
         ),
         _SignupProfileTab(
           titleText: 'tabs.gender.title'.tr(),
           body: SelectGenderField(
-            gender: _gender,
-            onValueChanged: (gender) => setState(() => _gender = gender),
+            gender: user.gender,
+            onValueChanged: (gender) => userNotifier.update(
+              user.copyWith(gender: gender),
+            ),
           ),
         ),
         _SignupProfileTab(
           titleText: 'tabs.age.title'.tr(),
           body: SelectAgeField(
-            age: _age,
-            onValueChanged: (age) => setState(() => _age = age),
+            age: user.age,
+            onValueChanged: (age) => userNotifier.update(
+              user.copyWith(age: age),
+            ),
           ),
         ),
         _SignupProfileTab(
           titleText: 'tabs.level.title'.tr(),
           body: SelectLevelField(
-            fitnessLevel: _level,
-            onValueChanged: (level) => setState(() => _level = level),
+            fitnessLevel: user.level,
+            onValueChanged: (level) => userNotifier.update(
+              user.copyWith(level: level),
+            ),
           ),
         ),
         _SignupProfileTab(
           titleText: 'tabs.preferences.title'.tr(),
           body: SelectPreferencesField(
-            preference: _preference,
-            onValueChanged: (preference) => setState(
-              () => _preference = preference,
+            preference: user.preference,
+            onValueChanged: (preference) => userNotifier.update(
+              user.copyWith(preference: preference),
             ),
           ),
         ),

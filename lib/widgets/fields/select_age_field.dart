@@ -5,10 +5,12 @@ class SelectAgeField extends StatelessWidget {
   const SelectAgeField({
     super.key,
     required this.age,
+    this.defaultAge = 18,
     required this.onValueChanged,
   });
 
-  final int age;
+  final int? age;
+  final int defaultAge;
   final void Function(int) onValueChanged;
 
   @override
@@ -27,7 +29,7 @@ class SelectAgeField extends StatelessWidget {
         fontSize: 32.0,
         color: theme.colorScheme.primary,
       ),
-      value: age,
+      value: age ?? defaultAge,
       onChanged: onValueChanged,
     );
   }

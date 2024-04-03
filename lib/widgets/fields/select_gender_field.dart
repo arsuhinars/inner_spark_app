@@ -12,7 +12,7 @@ class SelectGenderField extends StatelessWidget {
     required this.onValueChanged,
   });
 
-  final Gender gender;
+  final Gender? gender;
   final void Function(Gender) onValueChanged;
 
   @override
@@ -34,41 +34,27 @@ class SelectGenderField extends StatelessWidget {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        RadioTile(
-          value: Gender.female,
-          groupValue: gender,
-          onChanged: (g) => onValueChanged(g!),
-          addRadio: false,
-          style: radioTileStyle,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Icon(Icons.female),
-              const SizedBox(height: 4.0),
-              const Text('shared.gender_female').tr()
-            ],
+      children: Gender.values.map((gender) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: RadioTile(
+            value: gender,
+            groupValue: this.gender,
+            onChanged: (g) => onValueChanged(g!),
+            addRadio: false,
+            style: radioTileStyle,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(gender.icon),
+                const SizedBox(height: 4.0),
+                Text(gender.translationKey).tr()
+              ],
+            ),
           ),
-        ),
-        const SizedBox(height: 8.0),
-        RadioTile(
-          value: Gender.male,
-          groupValue: gender,
-          onChanged: (g) => onValueChanged(g!),
-          addRadio: false,
-          style: radioTileStyle,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Icon(Icons.male),
-              const SizedBox(height: 4.0),
-              const Text('shared.gender_male').tr()
-            ],
-          ),
-        ),
-      ],
+        );
+      }).toList(),
     );
   }
 }

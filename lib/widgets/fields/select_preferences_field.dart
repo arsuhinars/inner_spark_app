@@ -11,7 +11,7 @@ class SelectPreferencesField extends StatelessWidget {
     required this.onValueChanged,
   });
 
-  final ExercisePreference preference;
+  final ExercisePreference? preference;
   final void Function(ExercisePreference) onValueChanged;
 
   @override

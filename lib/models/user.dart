@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-enum Gender { male, female }
+part 'user.freezed.dart';
+part 'user.g.dart';
 
-enum UserGoal { beActive, beStrong, loseWeight }
+enum Gender {
+  male('shared.gender_male', Icons.male),
+  female('shared.gender_female', Icons.female);
+
+  const Gender(this.translationKey, this.icon);
+
+  final String translationKey;
+  final IconData icon;
+}
+
+enum UserGoal {
+  beActive('shared.goals.be_active', Icons.hiking_outlined),
+  beStrong('shared.goals.be_strong', Icons.fitness_center),
+  loseWeight('shared.goals.lose_weight', Icons.monitor_weight_outlined);
+
+  const UserGoal(this.translationKey, this.icon);
+
+  final String translationKey;
+  final IconData icon;
+}
 
 enum FitnessLevel {
   novice('shared.fitness_levels.novice'),
@@ -28,4 +50,28 @@ enum ExercisePreference {
 
   final String translationKey;
   final IconData icon;
+}
+
+@freezed
+class User with _$User {
+  const factory User({
+    required String name,
+    required String email,
+    required int points,
+    UserGoal? goal,
+    Gender? gender,
+    int? age,
+    FitnessLevel? level,
+    ExercisePreference? preference,
+  }) = _User;
+}
+
+@Riverpod(keepAlive: true)
+class UserNotifier extends _$UserNotifier {
+  @override
+  User? build() => null;
+
+  void update(User? user) {
+    state = user;
+  }
 }
