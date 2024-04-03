@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/widgets/cards/challenge_card.dart';
 import 'package:inner_spark_app/widgets/cards/user_card.dart';
 
@@ -14,7 +15,9 @@ class HomeView extends StatelessWidget {
         UserCard(
           onTap: () => (),
         ),
-        const _HomeChallengesView()
+        const _HomeChallengesView(),
+        const Divider(indent: 18.0, endIndent: 18.0),
+        const _HomeScheduleView()
       ],
     );
   }
@@ -93,6 +96,61 @@ class _HomeChallengesViewState extends State<_HomeChallengesView>
           )
         ],
       ),
+    );
+  }
+}
+
+class _HomeScheduleView extends StatefulWidget {
+  const _HomeScheduleView();
+
+  @override
+  State<_HomeScheduleView> createState() => _HomeScheduleViewState();
+}
+
+class _HomeScheduleViewState extends State<_HomeScheduleView> {
+  int _selectedPeriodIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [_buildHeadline(theme.textTheme)],
+      ),
+    );
+  }
+
+  Widget _buildHeadline(TextTheme textTheme) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text('main.home.schedule', style: textTheme.bodyLarge).tr(),
+        DropdownButtonHideUnderline(
+          child: DropdownButton(
+            value: _selectedPeriodIndex,
+            onChanged: (index) => setState(() => _selectedPeriodIndex = index!),
+            focusColor: onBackground,
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            borderRadius: BorderRadius.circular(16.0),
+            items: [
+              DropdownMenuItem(
+                value: 0,
+                child: const Text('shared.last_week').tr(),
+              ),
+              DropdownMenuItem(
+                value: 1,
+                child: const Text('shared.last_two_week').tr(),
+              ),
+              DropdownMenuItem(
+                value: 2,
+                child: const Text('shared.last_month').tr(),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
