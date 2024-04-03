@@ -62,6 +62,9 @@ main:
   user_greet: "Hello, "
   user_points: " points"
 
+  home:
+    challenges: Challenges
+
 
 shared:
   login: LOG IN
@@ -101,6 +104,23 @@ shared:
     cardio: Cardio
     yoga: Yoga
     other: Other
+
+  challenge:
+    "1":
+      title: Morning Energizer
+      description: >
+        Kickstart your day with energizing workouts to awaken your body and
+        mind. Get a new routine each day for a productive start!
+    "2":
+      title: Mindful Moments
+      description: >
+        Immerse yourself in daily meditations to reduce stress and enhance
+        mindfulness. Find inner peace in just 14 days!
+    "3":
+      title: Flexibility Fusion
+      description: >
+        Improve flexibility and mobility in 21 days with guided stretching
+        routines!
 
 
 validation:
