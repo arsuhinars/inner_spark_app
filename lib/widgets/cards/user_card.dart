@@ -70,7 +70,7 @@ class UserCard extends ConsumerWidget {
     return Row(
       children: [
         const Icon(Icons.bolt),
-        Text('${user?.points ?? 100}${'main.user_points'.tr()}')
+        const Text('main.user_points').tr(args: ['${user?.points ?? 100}'])
       ],
     );
   }

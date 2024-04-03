@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:inner_spark_app/models/workout.dart';
 import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/widgets/cards/challenge_card.dart';
 import 'package:inner_spark_app/widgets/cards/user_card.dart';
+import 'package:inner_spark_app/widgets/cards/workout_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -19,6 +22,9 @@ class HomeView extends StatelessWidget {
         const Divider(indent: 18.0, endIndent: 18.0),
         const _HomeScheduleView(),
         const Divider(indent: 18.0, endIndent: 18.0),
+        const _HomeWorkoutView(),
+        const Divider(indent: 18.0, endIndent: 18.0),
+        const _HomeRecommendationsView()
       ],
     );
   }
@@ -255,6 +261,275 @@ class _HomeScheduleViewState extends State<_HomeScheduleView> {
             ),
           ),
           Checkbox(value: isChecked, onChanged: (b) => onChecked(b!)),
+        ],
+      ),
+    );
+  }
+}
+
+class _HomeWorkoutView extends StatelessWidget {
+  const _HomeWorkoutView();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildProgressBox(theme.textTheme, theme.colorScheme),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildStepsBox(textTheme, colorScheme),
+              const SizedBox(height: 4.0),
+              _buildMoodBox(textTheme, colorScheme),
+              const SizedBox(height: 4.0),
+              _buildWaterBox(textTheme, colorScheme),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProgressBox(TextTheme textTheme, ColorScheme colorScheme) {
+    return SizedBox(
+      width: 180.0,
+      height: 180.0,
+      child: Material(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        color: colorScheme.secondary,
+        clipBehavior: Clip.hardEdge,
+        child: InkResponse(
+          onTap: () => (),
+          highlightShape: BoxShape.rectangle,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8.0,
+              vertical: 16.0,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'main.home.workout_progress'.tr(),
+                  style: textTheme.titleMedium!.copyWith(
+                    color: colorScheme.onSecondary,
+                  ),
+                ),
+                const SizedBox(height: 12.0),
+                Expanded(child: _buildProgress(textTheme, colorScheme))
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProgress(TextTheme textTheme, ColorScheme colorScheme) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Center(
+          child: SizedBox(
+            width: 112.0,
+            height: 112.0,
+            child: CircularProgressIndicator(
+              value: 1.0,
+              color: darkColor.withAlpha(30),
+              strokeWidth: 8.0,
+            ),
+          ),
+        ),
+        Center(
+          child: SizedBox(
+            width: 112.0,
+            height: 112.0,
+            child: CircularProgressIndicator(
+              value: 0.65,
+              color: colorScheme.onSecondary,
+              strokeWidth: 8.0,
+            ),
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '65%',
+              style: textTheme.titleLarge!.copyWith(
+                color: colorScheme.onSecondary,
+              ),
+            ),
+            Text(
+              'main.home.workout_exercises_left'.tr(args: ['12']),
+              style: textTheme.bodyMedium!.copyWith(
+                fontSize: 10,
+                color: colorScheme.onSecondary,
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _buildStepsBox(TextTheme textTheme, ColorScheme colorScheme) {
+    final textStyle = textTheme.bodyMedium!.copyWith(
+      color: colorScheme.onPrimary,
+    );
+
+    return SizedBox(
+      width: 120.0,
+      height: 60.0,
+      child: Material(
+        borderRadius: BorderRadius.circular(16.0),
+        color: colorScheme.primary,
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () => (),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 4.0,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('shared.steps'.tr(), style: textStyle),
+                      Text('6,535', style: textStyle),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.directions_walk,
+                  color: colorScheme.onPrimary,
+                  size: 40.0,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMoodBox(TextTheme textTheme, ColorScheme colorScheme) {
+    final textStyle = textTheme.bodyMedium!.copyWith(
+      color: orangeColor,
+    );
+
+    return SizedBox(
+      width: 120.0,
+      height: 60.0,
+      child: Material(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          side: const BorderSide(color: orangeColor, width: 2.0),
+        ),
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () => (),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 4.0,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text('shared.todays_mood'.tr(), style: textStyle),
+                ),
+                const Icon(Icons.mood, color: orangeColor, size: 40.0)
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWaterBox(TextTheme textTheme, ColorScheme colorScheme) {
+    final textStyle = textTheme.bodyMedium!.copyWith(
+      color: colorScheme.onSecondary,
+    );
+
+    return SizedBox(
+      width: 120.0,
+      height: 60.0,
+      child: Material(
+        color: colorScheme.secondary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () => (),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 4.0,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('shared.water'.tr(), style: textStyle),
+                      Text(
+                        'shared.water_ml'.tr(args: ['500']),
+                        style: textStyle,
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.water_drop_outlined,
+                  color: colorScheme.onSecondary,
+                  size: 40.0,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _HomeRecommendationsView extends ConsumerWidget {
+  const _HomeRecommendationsView();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final titleStyle = theme.textTheme.titleLarge!.copyWith(
+      color: theme.colorScheme.primary,
+    );
+
+    final workouts = ref.watch(workoutsProvider);
+    final workoutsList = workouts.valueOrNull ?? <Workout?>[null, null, null];
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            'main.home.recommendations'.tr(),
+            style: titleStyle,
+          ),
+          for (var w in workoutsList) WorkoutCard(workout: w, onTap: () => ())
         ],
       ),
     );

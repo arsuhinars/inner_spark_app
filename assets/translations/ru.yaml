@@ -60,7 +60,7 @@ main:
   store_title: Store
 
   user_greet: "Hello, "
-  user_points: " points"
+  user_points: "{} points"
 
   home:
     challenges: Challenges
@@ -75,6 +75,9 @@ main:
       "2":
         title: Meet your step goal
         description: Go to the tracker
+    workout_progress: Workout progress
+    workout_exercises_left: "{} exercises left"
+    recommendations: Recommendations
 
 
 shared:
@@ -99,6 +102,13 @@ shared:
   last_week: Last week
   last_two_weeks: Last two weeks
   last_month: Last month
+
+  steps: Steps
+  todays_mood: Today's mood
+  water: Water
+  water_ml: "{}ml"
+  x_minutes: "{} min"
+  x_points: "{} points"
 
   goals:
     be_active: I want to be active
@@ -136,6 +146,17 @@ shared:
       description: >
         Improve flexibility and mobility in 21 days with guided stretching
         routines!
+  
+  workouts:
+    "0":
+      title: Muscle Building
+      description: Full Body
+    "1":
+      title: Strength & Endurance
+      description: Full Body
+    "2":
+      title: Glutes & Quads
+      description: HIIT workout
 
 
 validation:

@@ -6,6 +6,7 @@ const primaryColor = Color.fromARGB(255, 178, 224, 30);
 const secondaryColor = Color.fromARGB(255, 200, 187, 243);
 const onBackground = Color.fromARGB(255, 237, 237, 237);
 const darkColor = Color.fromARGB(255, 75, 71, 71);
+const orangeColor = Color.fromARGB(255, 229, 191, 41);
 
 /* Flutter theme objects */
 final colorScheme = ColorScheme.fromSeed(
