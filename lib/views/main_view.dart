@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:inner_spark_app/views/main/home_view.dart';
 import 'package:inner_spark_app/views/main/meditations_view.dart';
 import 'package:inner_spark_app/views/main/mood_view.dart';
@@ -34,24 +35,28 @@ class _MainViewState extends State<MainView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const _MainViewAppBar(),
+      resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: false,
+      appBar: AppBar(flexibleSpace: const _MainViewAppBar()),
       bottomNavigationBar: _MainViewBottomBar(
         tabIndex: _tabController.index,
         onTabChanged: (tabIndex) => setState(
           () => _tabController.animateTo(tabIndex),
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: const [
-          WorkoutsView(),
-          MeditationsView(),
-          HomeView(),
-          StepsHydrationsView(),
-          MoodView(),
-          StoreView()
-        ],
+      body: SafeArea(
+        child: TabBarView(
+          controller: _tabController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: const [
+            WorkoutsView(),
+            MeditationsView(),
+            HomeView(),
+            StepsHydrationsView(),
+            MoodView(),
+            StoreView()
+          ],
+        ),
       ),
     );
   }
@@ -64,12 +69,17 @@ class _MainViewAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: height,
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: SearchBar(
-          leading: Icon(Icons.search),
+    final topPadding = MediaQuery.of(context).viewPadding.top;
+
+    return Padding(
+      padding: EdgeInsets.only(top: topPadding),
+      child: const SizedBox(
+        height: height,
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: SearchBar(
+            leading: Icon(Icons.search),
+          ),
         ),
       ),
     );

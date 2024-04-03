@@ -148,11 +148,12 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
         child: Container(
-          height: 128.0,
+          height: 176.0,
           decoration: BoxDecoration(
-            color: darkColor.withAlpha(30),
+            color: darkColor.withAlpha(20),
             borderRadius: BorderRadius.circular(16.0),
           ),
+          padding: const EdgeInsets.all(16.0),
           child: PageView.builder(
             itemCount: tipsCount,
             controller: _pageController,

@@ -67,7 +67,7 @@ class _HomeChallengesViewState extends State<_HomeChallengesView>
           ),
           const SizedBox(height: 8.0),
           SizedBox(
-            height: 178.0,
+            height: 140.0,
             child: TabBarView(
               controller: _tabController,
               children: [
@@ -170,24 +170,27 @@ class _HomeScheduleViewState extends State<_HomeScheduleView> {
   }
 
   Widget _buildCalendar(TextTheme textTheme, ColorScheme colorScheme) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        for (var i = -2; i < 3; ++i)
-          _buildDayChip(
-            DateTime.now().add(Duration(days: i)),
-            i == _selectedWeekday,
-            textTheme,
-            colorScheme,
-            (b) {
-              if (b) {
-                setState(() {
-                  _selectedWeekday = i;
-                });
-              }
-            },
-          )
-      ],
+    return SizedBox(
+      height: 56.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          for (var i = -2; i < 3; ++i)
+            _buildDayChip(
+              DateTime.now().add(Duration(days: i)),
+              i == _selectedWeekday,
+              textTheme,
+              colorScheme,
+              (b) {
+                if (b) {
+                  setState(() {
+                    _selectedWeekday = i;
+                  });
+                }
+              },
+            )
+        ],
+      ),
     );
   }
 
@@ -198,24 +201,28 @@ class _HomeScheduleViewState extends State<_HomeScheduleView> {
     ColorScheme colorScheme,
     void Function(bool) onSelected,
   ) {
-    return ChoiceChip(
-      selected: isSelected,
-      showCheckmark: false,
-      onSelected: onSelected,
-      selectedColor: colorScheme.primary,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
-      label: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: Column(
-          children: [
-            Text(
-              date.day.toString(),
-              style: textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.w700,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+      child: ChoiceChip(
+        selected: isSelected,
+        showCheckmark: false,
+        onSelected: onSelected,
+        selectedColor: colorScheme.primary,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
+        label: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Column(
+            children: [
+              Text(
+                date.day.toString(),
+                style: textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
-            Text(DateFormat.E().format(date))
-          ],
+              Text(DateFormat.E().format(date))
+            ],
+          ),
         ),
       ),
     );
@@ -297,8 +304,8 @@ class _HomeWorkoutView extends StatelessWidget {
 
   Widget _buildProgressBox(TextTheme textTheme, ColorScheme colorScheme) {
     return SizedBox(
-      width: 180.0,
-      height: 180.0,
+      width: 148.0,
+      height: 148.0,
       child: Material(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
@@ -338,8 +345,8 @@ class _HomeWorkoutView extends StatelessWidget {
       children: [
         Center(
           child: SizedBox(
-            width: 112.0,
-            height: 112.0,
+            width: 80.0,
+            height: 80.0,
             child: CircularProgressIndicator(
               value: 1.0,
               color: darkColor.withAlpha(30),
@@ -349,8 +356,8 @@ class _HomeWorkoutView extends StatelessWidget {
         ),
         Center(
           child: SizedBox(
-            width: 112.0,
-            height: 112.0,
+            width: 80.0,
+            height: 80.0,
             child: CircularProgressIndicator(
               value: 0.65,
               color: colorScheme.onSecondary,
@@ -364,13 +371,6 @@ class _HomeWorkoutView extends StatelessWidget {
             Text(
               '65%',
               style: textTheme.titleLarge!.copyWith(
-                color: colorScheme.onSecondary,
-              ),
-            ),
-            Text(
-              'main.home.workout_exercises_left'.tr(args: ['12']),
-              style: textTheme.bodyMedium!.copyWith(
-                fontSize: 10,
                 color: colorScheme.onSecondary,
               ),
             ),
