@@ -57,6 +57,8 @@ enum ExercisePreference {
 
 @freezed
 class User with _$User {
+  const User._();
+
   const factory User({
     required String name,
     required String email,
@@ -69,6 +71,12 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+
+  ImageProvider get photo => switch (gender) {
+        Gender.male => const AssetImage('assets/images/male_photo.png'),
+        Gender.female => const AssetImage('assets/images/female_photo.png'),
+        _ => const AssetImage('assets/images/unknown_photo.png')
+      };
 }
 
 @Riverpod(keepAlive: true)

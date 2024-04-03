@@ -62,7 +62,7 @@ const _$ExercisePreferenceEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userNotifierHash() => r'0bbadee2b74a73d428f9d237c3a6521a673c6410';
+String _$userNotifierHash() => r'158c1bd94e2a21b089be5d5887d3cea18c91d4bb';
 
 /// See also [UserNotifier].
 @ProviderFor(UserNotifier)

@@ -59,6 +59,9 @@ main:
   mood_title: Mood
   store_title: Store
 
+  user_greet: "Hello, "
+  user_points: " points"
+
 
 shared:
   login: LOG IN
