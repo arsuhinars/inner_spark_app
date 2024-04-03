@@ -65,6 +65,16 @@ main:
   home:
     challenges: Challenges
     schedule: My schedule
+    tasks:
+      "0":
+        title: Morning Exercise
+        description: Go to the workout
+      "1":
+        title: Recognize your emotions
+        description: Go to the tracker
+      "2":
+        title: Meet your step goal
+        description: Go to the tracker
 
 
 shared:

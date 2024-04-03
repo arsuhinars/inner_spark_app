@@ -64,6 +64,17 @@ main:
 
   home:
     challenges: Challenges
+    schedule: My schedule
+    tasks:
+      "0":
+        title: Morning Exercise
+        description: Go to the workout
+      "1":
+        title: Recognize your emotions
+        description: Go to the tracker
+      "2":
+        title: Meet your step goal
+        description: Go to the tracker
 
 
 shared:
@@ -84,6 +95,10 @@ shared:
 
   gender_male: I am Male
   gender_female: I am Female
+
+  last_week: Last week
+  last_two_weeks: Last two weeks
+  last_month: Last month
 
   goals:
     be_active: I want to be active
