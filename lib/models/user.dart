@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';
@@ -64,14 +67,36 @@ class User with _$User {
     FitnessLevel? level,
     ExercisePreference? preference,
   }) = _User;
+
+  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 }
 
 @Riverpod(keepAlive: true)
 class UserNotifier extends _$UserNotifier {
-  @override
-  User? build() => null;
+  static const String userPrefsKey = 'current_user';
 
-  void update(User? user) {
-    state = user;
+  @override
+  Future<User?> build() async {
+    final prefs = await SharedPreferences.getInstance();
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    if (!prefs.containsKey(userPrefsKey)) {
+      return null;
+    }
+
+    final userJson = jsonDecode(prefs.getString(userPrefsKey)!);
+    return User.fromJson(userJson);
+  }
+
+  void setUser(User? user) async {
+    state = AsyncValue.data(user);
+
+    final prefs = await SharedPreferences.getInstance();
+    if (user == null) {
+      await prefs.remove(userPrefsKey);
+    } else {
+      final userData = jsonEncode(user.toJson());
+      await prefs.setString(userPrefsKey, userData);
+    }
   }
 }

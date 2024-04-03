@@ -2,13 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:inner_spark_app/models/user.dart';
+import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/widgets/fields/select_age_field.dart';
 import 'package:inner_spark_app/widgets/fields/select_gender_field.dart';
 import 'package:inner_spark_app/widgets/fields/select_goal_field.dart';
 import 'package:inner_spark_app/widgets/fields/select_level_field.dart';
 import 'package:inner_spark_app/widgets/fields/select_preferences_field.dart';
-import 'package:inner_spark_app/widgets/skip_continue_buttons.dart';
 
 class SignupProfileView extends ConsumerStatefulWidget {
   const SignupProfileView({super.key});
@@ -55,37 +56,43 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
 
   Widget _buildBody() {
     final colorScheme = Theme.of(context).colorScheme;
+    final user = ref.watch(userNotifierProvider);
+    final userNotifier = ref.read(userNotifierProvider.notifier);
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16.0, 48.0, 16.0, 24.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(child: _buildTabBarView()),
-          SkipContinueButtons(
-            onSkipPressed: () => _onSkipPressed(),
-            onContinuePressed: () => _onContinuePressed(),
-          ),
-          const SizedBox(height: 24.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TabPageSelector(
-                controller: _tabController,
-                selectedColor: colorScheme.primary,
-              ),
-            ],
-          ),
-        ],
+    return Skeletonizer(
+      enabled: user.isLoading,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16.0, 48.0, 16.0, 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: user.hasValue
+                  ? _buildTabBarView(user.value!, userNotifier)
+                  : const Bone(),
+            ),
+            _SkipContinueButtons(
+              onSkipPressed: () => _onSkipPressed(),
+              onContinuePressed: () => _onContinuePressed(),
+            ),
+            const SizedBox(height: 24.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TabPageSelector(
+                  controller: _tabController,
+                  selectedColor: colorScheme.primary,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildTabBarView() {
-    final user = ref.watch(userNotifierProvider)!;
-    final userNotifier = ref.read(userNotifierProvider.notifier);
-
+  Widget _buildTabBarView(User user, UserNotifier notifier) {
     return TabBarView(
       controller: _tabController,
       physics: const NeverScrollableScrollPhysics(),
@@ -94,7 +101,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
           titleText: 'tabs.goal.title'.tr(),
           body: SelectGoalField(
             goal: user.goal,
-            onValueChanged: (goal) => userNotifier.update(
+            onValueChanged: (goal) => notifier.setUser(
               user.copyWith(goal: goal),
             ),
           ),
@@ -103,7 +110,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
           titleText: 'tabs.gender.title'.tr(),
           body: SelectGenderField(
             gender: user.gender,
-            onValueChanged: (gender) => userNotifier.update(
+            onValueChanged: (gender) => notifier.setUser(
               user.copyWith(gender: gender),
             ),
           ),
@@ -112,7 +119,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
           titleText: 'tabs.age.title'.tr(),
           body: SelectAgeField(
             age: user.age,
-            onValueChanged: (age) => userNotifier.update(
+            onValueChanged: (age) => notifier.setUser(
               user.copyWith(age: age),
             ),
           ),
@@ -121,7 +128,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
           titleText: 'tabs.level.title'.tr(),
           body: SelectLevelField(
             fitnessLevel: user.level,
-            onValueChanged: (level) => userNotifier.update(
+            onValueChanged: (level) => notifier.setUser(
               user.copyWith(level: level),
             ),
           ),
@@ -130,7 +137,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
           titleText: 'tabs.preferences.title'.tr(),
           body: SelectPreferencesField(
             preference: user.preference,
-            onValueChanged: (preference) => userNotifier.update(
+            onValueChanged: (preference) => notifier.setUser(
               user.copyWith(preference: preference),
             ),
           ),
@@ -149,7 +156,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
 
   void _onSkipPressed() {
     if (_tabController.index == _tabController.length - 1) {
-      // TODO: save results
+      context.go('/');
     } else {
       _tabController.animateTo(_tabController.index + 1);
     }
@@ -157,7 +164,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
 
   void _onContinuePressed() {
     if (_tabController.index == _tabController.length - 1) {
-      // TODO: save results
+      context.go('/');
     } else {
       _tabController.animateTo(_tabController.index + 1);
     }
@@ -185,6 +192,49 @@ class _SignupProfileTab extends StatelessWidget {
           style: theme.textTheme.titleLarge,
         ),
         Expanded(child: Center(child: body)),
+      ],
+    );
+  }
+}
+
+class _SkipContinueButtons extends StatelessWidget {
+  const _SkipContinueButtons({
+    required this.onSkipPressed,
+    required this.onContinuePressed,
+  });
+
+  final void Function() onSkipPressed;
+  final void Function() onContinuePressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        OutlinedButton(
+          onPressed: onSkipPressed,
+          style: darkOutlinedButton,
+          child: Text.rich(
+            TextSpan(children: [
+              TextSpan(text: 'shared.skip'.tr()),
+              const WidgetSpan(child: SizedBox(width: 8.0)),
+              const WidgetSpan(child: Icon(Icons.arrow_forward))
+            ]),
+          ),
+        ),
+        const SizedBox(height: 8.0),
+        FilledButton(
+          onPressed: onContinuePressed,
+          style: darkButton,
+          child: Text.rich(
+            TextSpan(children: [
+              TextSpan(text: 'shared.continue'.tr()),
+              const WidgetSpan(child: SizedBox(width: 8.0)),
+              const WidgetSpan(child: Icon(Icons.arrow_forward))
+            ]),
+          ),
+        ),
       ],
     );
   }

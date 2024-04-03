@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+User _$UserFromJson(Map<String, dynamic> json) {
+  return _User.fromJson(json);
+}
+
 /// @nodoc
 mixin _$User {
   String get name => throw _privateConstructorUsedError;
@@ -25,6 +29,7 @@ mixin _$User {
   FitnessLevel? get level => throw _privateConstructorUsedError;
   ExercisePreference? get preference => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
@@ -179,7 +184,7 @@ class __$$UserImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$UserImpl implements _User {
   const _$UserImpl(
       {required this.name,
@@ -190,6 +195,9 @@ class _$UserImpl implements _User {
       this.age,
       this.level,
       this.preference});
+
+  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserImplFromJson(json);
 
   @override
   final String name;
@@ -229,6 +237,7 @@ class _$UserImpl implements _User {
                 other.preference == preference));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, name, email, points, goal, gender, age, level, preference);
@@ -238,6 +247,13 @@ class _$UserImpl implements _User {
   @pragma('vm:prefer-inline')
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
       __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UserImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _User implements User {
@@ -250,6 +266,8 @@ abstract class _User implements User {
       final int? age,
       final FitnessLevel? level,
       final ExercisePreference? preference}) = _$UserImpl;
+
+  factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
   String get name;

@@ -8,7 +8,7 @@ startup:
         through invigorating workouts. Fuel your body and find harmony in every
         movement.
     "1":
-      title: MEDIATIONS
+      title: MEDITATIONS
       body: >
         In the tranquil sanctuary of your mind, find solace and serenity. Let
         each breath be a reminder of your inner light. Through mindfulness,
@@ -49,6 +49,15 @@ login:
 
 signup_email:
   title: SIGN UP WITH EMAIL
+
+
+main:
+  home_title: Home
+  workouts_title: Workouts
+  meditations_title: Meditations
+  steps_hydration_title: Steps & Hydration
+  mood_title: Mood
+  store_title: Store
 
 
 shared:

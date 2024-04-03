@@ -13,7 +13,7 @@ class SignupEmailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: _SignupEmailViewBody(),
+      body: const _SignupEmailViewBody(),
       resizeToAvoidBottomInset: false,
     );
   }
@@ -109,16 +109,14 @@ class _SignupEmailViewBodyState extends ConsumerState<_SignupEmailViewBody> {
     );
   }
 
-  void _onSignupPressed(BuildContext context) async {
+  void _onSignupPressed(BuildContext context) {
     if (_signupFormKey.currentState!.validate()) {
       final user = User(
         name: _nameController.text,
         email: _emailController.text,
         points: 100,
       );
-      ref.read(userNotifierProvider.notifier).update(user);
-
-      await Future.delayed(const Duration(milliseconds: 10));
+      ref.read(userNotifierProvider.notifier).setUser(user);
 
       context.push('/signup/profile');
     }

@@ -42,7 +42,7 @@ class SelectPreferencesField extends StatelessWidget {
           Text(
             currPreference.translationKey.tr(),
             textAlign: TextAlign.center,
-          ).tr(),
+          ),
         ],
       ),
     );
