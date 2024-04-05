@@ -69,7 +69,7 @@ class UserCard extends ConsumerWidget {
   Widget _buildSubLabel(User? user) {
     return Row(
       children: [
-        const Icon(Icons.bolt),
+        const Skeleton.shade(child: Icon(Icons.bolt)),
         const Text('main.user_points').tr(args: ['${user?.points ?? 100}'])
       ],
     );

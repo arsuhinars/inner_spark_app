@@ -78,6 +78,29 @@ main:
     workout_progress: Workout progress
     workout_exercises_left: "{} exercises left"
     recommendations: Recommendations
+  
+  workouts:
+    filter: Filter Workouts
+    workout_type_filter: Workout Type
+    workouts_types:
+      weightlift: Weightlift
+      yoga: Yoga
+      cardio: Cardio
+      jogging: Jogging
+    points_filter: Browse by points
+    points_label: < {} points
+    body_parts_filter: Body parts
+    body_parts:
+      upper_body: Upper Body
+      lower_body: Lower Body
+      full_body: Full Body
+    duration_filter: Workout Duration / Minutes
+    sort_type: Sort by
+    sort:
+      latest: Latest
+      popular: Popular
+      oldest: Oldest
+
 
 profile:
   goals_title: My goals
