@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/models/workout.dart';
 import 'package:inner_spark_app/theme.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class WorkoutView extends ConsumerWidget {
   const WorkoutView({super.key});
@@ -18,62 +19,65 @@ class WorkoutView extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(),
-      body: ListView(
-        children: [
-          _buildPreview(workout, theme.textTheme),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                FilledButton.tonal(
-                  style: primaryButton,
-                  onPressed: () => (),
-                  child: Text('workout.start'.tr()),
-                ),
-                const SizedBox(height: 8.0),
-                OutlinedButton(
-                  style: darkOutlinedButton,
-                  onPressed: () => (),
-                  child: Text('workout.add_to_schedule'.tr()),
-                ),
-                const SizedBox(height: 16.0),
-                Wrap(
-                  children: [
-                    Chip(
-                      avatar: Icon(
-                        Icons.timer_outlined,
-                        color: theme.colorScheme.onBackground,
-                      ),
-                      label: Text(
-                        'shared.x_minutes'.tr(
-                          args: [
-                            workout?.requiredTime.inMinutes.toString() ??
-                                '10 min'
-                          ],
+      body: Skeletonizer(
+        enabled: workouts.isLoading,
+        child: ListView(
+          children: [
+            _buildPreview(workout, theme.textTheme),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  FilledButton.tonal(
+                    style: primaryButton,
+                    onPressed: () => (),
+                    child: Text('workout.start'.tr()),
+                  ),
+                  const SizedBox(height: 8.0),
+                  OutlinedButton(
+                    style: darkOutlinedButton,
+                    onPressed: () => (),
+                    child: Text('workout.add_to_schedule'.tr()),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Wrap(
+                    children: [
+                      Chip(
+                        avatar: Icon(
+                          Icons.timer_outlined,
+                          color: theme.colorScheme.onBackground,
+                        ),
+                        label: Text(
+                          'shared.x_minutes'.tr(
+                            args: [
+                              workout?.requiredTime.inMinutes.toString() ??
+                                  '10 min'
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 4.0),
-                    Chip(
-                      avatar: Icon(
-                        Icons.bolt,
-                        color: theme.colorScheme.onBackground,
-                      ),
-                      label: Text(
-                        'shared.x_points'.tr(
-                          args: [
-                            workout?.pointsReward.toString() ?? '15 points'
-                          ],
+                      const SizedBox(width: 4.0),
+                      Chip(
+                        avatar: Icon(
+                          Icons.bolt,
+                          color: theme.colorScheme.onBackground,
                         ),
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+                        label: Text(
+                          'shared.x_points'.tr(
+                            args: [
+                              workout?.pointsReward.toString() ?? '15 points'
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

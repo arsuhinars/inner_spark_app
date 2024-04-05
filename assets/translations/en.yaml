@@ -100,6 +100,9 @@ main:
       latest: Latest
       popular: Popular
       oldest: Oldest
+  
+  progress:
+    title: Steps & Hydration Tracker
 
 
 profile:
@@ -114,7 +117,6 @@ profile:
 
 workout:
   start: Get started
-  add_to_schedule: Add to my schedule
 
 
 shared:
@@ -148,11 +150,13 @@ shared:
   water_ml: "{}ml"
   x_minutes: "{} min"
   x_points: "{} points"
+  x_steps: "{} steps"
+  average: Average
 
   goals:
     be_active: I want to be active
     be_strong: I want to be strong
-    lose_weight: I want to lose weight
+    lose_weight: I want to lose weight1
 
   fitness_levels:
     novice: Novice

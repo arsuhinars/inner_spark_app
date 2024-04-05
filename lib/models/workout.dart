@@ -23,7 +23,7 @@ class Workout with _$Workout {
 
 @riverpod
 Future<List<Workout>> workouts(WorkoutsRef ref) async {
-  await Future.delayed(const Duration(milliseconds: 2000));
+  await Future.delayed(const Duration(milliseconds: 1000));
   return const [
     Workout(
       titleKey: 'shared.workouts.0.title',

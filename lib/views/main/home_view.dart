@@ -4,9 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/models/workout.dart';
 import 'package:inner_spark_app/theme.dart';
+import 'package:inner_spark_app/views/calendar_line.dart';
 import 'package:inner_spark_app/widgets/cards/challenge_card.dart';
 import 'package:inner_spark_app/widgets/cards/user_card.dart';
 import 'package:inner_spark_app/widgets/cards/workout_card.dart';
+import 'package:inner_spark_app/widgets/fields/date_range_field.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -130,7 +132,10 @@ class _HomeScheduleViewState extends State<_HomeScheduleView> {
         children: [
           _buildHeadline(theme.textTheme),
           const SizedBox(height: 8.0),
-          _buildCalendar(theme.textTheme, theme.colorScheme),
+          CalendarLine(
+            selectedWeekday: _selectedWeekday,
+            onWeekdaySelected: (i) => setState(() => _selectedWeekday = i),
+          ),
           const SizedBox(height: 8.0),
           _buildTasks(theme.textTheme),
         ],
@@ -143,89 +148,11 @@ class _HomeScheduleViewState extends State<_HomeScheduleView> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text('main.home.schedule', style: textTheme.bodyLarge).tr(),
-        DropdownButtonHideUnderline(
-          child: DropdownButton(
-            value: _selectedPeriodIndex,
-            onChanged: (index) => setState(() => _selectedPeriodIndex = index!),
-            focusColor: onBackground,
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            borderRadius: BorderRadius.circular(16.0),
-            items: [
-              DropdownMenuItem(
-                value: 0,
-                child: const Text('shared.last_week').tr(),
-              ),
-              DropdownMenuItem(
-                value: 1,
-                child: const Text('shared.last_two_weeks').tr(),
-              ),
-              DropdownMenuItem(
-                value: 2,
-                child: const Text('shared.last_month').tr(),
-              ),
-            ],
-          ),
+        DateRangeField(
+          selectedPeriodIndex: _selectedPeriodIndex,
+          onPeriodChanged: (i) => setState(() => _selectedPeriodIndex = i),
         )
       ],
-    );
-  }
-
-  Widget _buildCalendar(TextTheme textTheme, ColorScheme colorScheme) {
-    return SizedBox(
-      height: 56.0,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          for (var i = -2; i < 3; ++i)
-            _buildDayChip(
-              DateTime.now().add(Duration(days: i)),
-              i == _selectedWeekday,
-              textTheme,
-              colorScheme,
-              (b) {
-                if (b) {
-                  setState(() {
-                    _selectedWeekday = i;
-                  });
-                }
-              },
-            )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDayChip(
-    DateTime date,
-    bool isSelected,
-    TextTheme textTheme,
-    ColorScheme colorScheme,
-    void Function(bool) onSelected,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 2.0),
-      child: ChoiceChip(
-        selected: isSelected,
-        showCheckmark: false,
-        onSelected: onSelected,
-        selectedColor: colorScheme.primary,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
-        label: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          child: Column(
-            children: [
-              Text(
-                date.day.toString(),
-                style: textTheme.bodyMedium!.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Text(DateFormat.E().format(date))
-            ],
-          ),
-        ),
-      ),
     );
   }
 
