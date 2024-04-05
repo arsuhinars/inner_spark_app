@@ -112,6 +112,11 @@ profile:
     "4": Daily mindfulness practice
 
 
+workout:
+  start: Get started
+  add_to_schedule: Add to my schedule
+
+
 shared:
   login: LOG IN
   signup: SIGN UP

@@ -530,7 +530,11 @@ class _HomeRecommendationsView extends ConsumerWidget {
             'main.home.recommendations'.tr(),
             style: titleStyle,
           ),
-          for (var w in workoutsList) WorkoutCard(workout: w, onTap: () => ())
+          for (var (i, w) in workoutsList.indexed)
+            WorkoutCard(
+              workout: w,
+              onTap: () => context.push('/workout/$i'),
+            )
         ],
       ),
     );
