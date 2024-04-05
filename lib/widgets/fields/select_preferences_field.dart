@@ -18,7 +18,6 @@ class SelectPreferencesField extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
-      padding: const EdgeInsets.all(16.0),
       mainAxisSpacing: 8.0,
       crossAxisSpacing: 8.0,
       shrinkWrap: true,

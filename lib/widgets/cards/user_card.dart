@@ -5,9 +5,9 @@ import 'package:inner_spark_app/models/user.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class UserCard extends ConsumerWidget {
-  const UserCard({super.key, required this.onTap});
+  const UserCard({super.key, this.onTap});
 
-  final void Function() onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,7 +19,7 @@ class UserCard extends ConsumerWidget {
       child: Card(
         clipBehavior: Clip.hardEdge,
         child: InkWell(
-          onTap: onTap,
+          onTap: user.hasValue ? onTap : null,
           child: SizedBox(
             height: 72.0,
             child: Padding(

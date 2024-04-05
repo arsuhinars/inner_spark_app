@@ -5,6 +5,7 @@ import 'package:inner_spark_app/views/onboarding/signup_email_view.dart';
 import 'package:inner_spark_app/views/onboarding/signup_profile_view.dart';
 import 'package:inner_spark_app/views/onboarding/signup_view.dart';
 import 'package:inner_spark_app/views/onboarding/startup_view.dart';
+import 'package:inner_spark_app/views/user_profile_view.dart';
 
 final onboardingRoutes = [
   GoRoute(
@@ -32,10 +33,14 @@ final onboardingRoutes = [
 final router = GoRouter(
   initialLocation: '/startup',
   routes: [
+    ...onboardingRoutes,
     GoRoute(
       path: '/',
       builder: (context, state) => const MainView(),
     ),
-    ...onboardingRoutes,
+    GoRoute(
+      path: '/profile',
+      builder: (context, state) => const UserProfileView(),
+    ),
   ],
 );

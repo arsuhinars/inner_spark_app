@@ -33,8 +33,9 @@ class WorkoutCard extends StatelessWidget {
             ),
             clipBehavior: Clip.hardEdge,
             child: workout != null
-                ? InkWell(
+                ? InkResponse(
                     onTap: onTap,
+                    highlightShape: BoxShape.rectangle,
                     child: _buildBody(workout, theme.textTheme),
                   )
                 : const Bone(),

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:inner_spark_app/models/workout.dart';
 import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/widgets/cards/challenge_card.dart';
@@ -16,7 +17,7 @@ class HomeView extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       children: [
         UserCard(
-          onTap: () => (),
+          onTap: () => context.push('/profile'),
         ),
         const _HomeChallengesView(),
         const Divider(indent: 18.0, endIndent: 18.0),

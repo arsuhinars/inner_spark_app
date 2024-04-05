@@ -21,9 +21,8 @@ String? passwordValidator(String? value) {
   }
 
   if (value.length < minPasswordLength) {
-    return 'validation.too_short_password'.tr(
-      args: [minPasswordLength.toString()]
-    );
+    return 'validation.too_short_password'
+        .tr(args: [minPasswordLength.toString()]);
   }
 
   return null;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:inner_spark_app/theme.dart';
 
 class ChallengeCard extends StatelessWidget {

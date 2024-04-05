@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:inner_spark_app/views/main/home_view.dart';
-import 'package:inner_spark_app/views/main/meditations_view.dart';
 import 'package:inner_spark_app/views/main/mood_view.dart';
 import 'package:inner_spark_app/views/main/steps_hydrations_view.dart';
 import 'package:inner_spark_app/views/main/store_view.dart';
@@ -26,9 +24,9 @@ class _MainViewState extends State<MainView>
     super.initState();
 
     _tabController = TabController(
-      length: 6,
+      length: 5,
       vsync: this,
-      initialIndex: 2,
+      initialIndex: 0,
     );
   }
 
@@ -44,19 +42,17 @@ class _MainViewState extends State<MainView>
           () => _tabController.animateTo(tabIndex),
         ),
       ),
-      body: SafeArea(
-        child: TabBarView(
-          controller: _tabController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: const [
-            WorkoutsView(),
-            MeditationsView(),
-            HomeView(),
-            StepsHydrationsView(),
-            MoodView(),
-            StoreView()
-          ],
-        ),
+      body: TabBarView(
+        controller: _tabController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          HomeView(),
+          WorkoutsView(),
+          // MeditationsView(),
+          StepsHydrationsView(),
+          MoodView(),
+          StoreView()
+        ],
       ),
     );
   }
@@ -105,19 +101,19 @@ class _MainViewBottomBar extends StatelessWidget {
       onDestinationSelected: onTabChanged,
       destinations: [
         NavigationDestination(
-          icon: const Icon(Icons.fitness_center),
-          label: 'main.workouts_title'.tr(),
-        ),
-        NavigationDestination(
-          icon: const Icon(Icons.psychology),
-          label: 'main.meditations_title'.tr(),
-        ),
-        NavigationDestination(
           icon: const Icon(Icons.home),
           label: 'main.home_title'.tr(),
         ),
         NavigationDestination(
-          icon: const Icon(Icons.water_drop),
+          icon: const Icon(Icons.fitness_center),
+          label: 'main.workouts_title'.tr(),
+        ),
+        // NavigationDestination(
+        //   icon: const Icon(Icons.psychology),
+        //   label: 'main.meditations_title'.tr(),
+        // ),
+        NavigationDestination(
+          icon: const Icon(Icons.directions_run),
           label: 'main.steps_hydration_title'.tr(),
         ),
         NavigationDestination(

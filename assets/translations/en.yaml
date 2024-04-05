@@ -55,7 +55,7 @@ main:
   home_title: Home
   workouts_title: Workouts
   meditations_title: Meditations
-  steps_hydration_title: Steps & Hydration
+  steps_hydration_title: Progress
   mood_title: Mood
   store_title: Store
 
@@ -79,6 +79,15 @@ main:
     workout_exercises_left: "{} exercises left"
     recommendations: Recommendations
 
+profile:
+  goals_title: My goals
+  profile_title: My profile
+  goals:
+    "1": To gain muscles
+    "2": 10,000 steps per day
+    "3": 1,500ml of water per day
+    "4": Daily mindfulness practice
+
 
 shared:
   login: LOG IN
@@ -92,6 +101,8 @@ shared:
   name_field_label: YOUR NAME
   email_field_label: YOUR EMAIL ADDRESS
   password_field_label: YOUR PASSWORD
+  fitness_level_field_label: YOUR FITNESS LEVEL
+  exercise_preference_field_label: YOUR EXERCISE PREFERENCE
 
   terms_of_service_agreement: >
     By continuing you agree to accept our Terms of Service & Privacy Policy
