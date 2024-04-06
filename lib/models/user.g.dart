@@ -62,12 +62,12 @@ const _$ExercisePreferenceEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userNotifierHash() => r'068d6df81faa1d36c1665f6f32f502a19987d3d5';
+String _$userNotifierHash() => r'de3d88fa7b039f3192d72fda219e5476564e5a50';
 
 /// See also [UserNotifier].
 @ProviderFor(UserNotifier)
 final userNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<UserNotifier, User?>.internal(
+    AsyncNotifierProvider<UserNotifier, User?>.internal(
   UserNotifier.new,
   name: r'userNotifierProvider',
   debugGetCreateSourceHash:
@@ -76,6 +76,6 @@ final userNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$UserNotifier = AutoDisposeAsyncNotifier<User?>;
+typedef _$UserNotifier = AsyncNotifier<User?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

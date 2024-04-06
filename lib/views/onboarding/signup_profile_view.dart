@@ -70,11 +70,14 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
             Expanded(
               child: user.hasValue
                   ? _buildTabBarView(user.value!, userNotifier)
-                  : const Bone(),
+                  : Bone(borderRadius: BorderRadius.circular(16.0)),
             ),
-            _SkipContinueButtons(
-              onSkipPressed: () => _onSkipPressed(),
-              onContinuePressed: () => _onContinuePressed(),
+            const SizedBox(height: 24.0),
+            Skeleton.keep(
+              child: _SkipContinueButtons(
+                onSkipPressed: () => _onSkipPressed(),
+                onContinuePressed: () => _onContinuePressed(),
+              ),
             ),
             const SizedBox(height: 24.0),
             Row(

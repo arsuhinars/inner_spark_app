@@ -1,4 +1,4 @@
-package com.example.inner_spark_app
+package com.arsuhinars.inner_spark_app
 
 import io.flutter.embedding.android.FlutterActivity
 

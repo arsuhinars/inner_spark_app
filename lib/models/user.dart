@@ -79,14 +79,14 @@ class User with _$User {
       };
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 class UserNotifier extends _$UserNotifier {
   static const String userPrefsKey = 'current_user';
 
   @override
   Future<User?> build() async {
     final prefs = await SharedPreferences.getInstance();
-    await Future.delayed(const Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 2000));
 
     if (!prefs.containsKey(userPrefsKey)) {
       return null;

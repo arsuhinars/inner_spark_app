@@ -1,13 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inner_spark_app/app.dart';
 import 'package:inner_spark_app/models/user.dart';
 import 'package:inner_spark_app/router.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  var widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await EasyLocalization.ensureInitialized();
 
@@ -17,6 +19,8 @@ void main() async {
   if (user != null) {
     router.go('/');
   }
+
+  FlutterNativeSplash.remove();
 
   runApp(
     UncontrolledProviderScope(

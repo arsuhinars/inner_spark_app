@@ -117,6 +117,7 @@ profile:
 
 workout:
   start: Get started
+  add_to_schedule: Add to my schedule
 
 
 shared:
