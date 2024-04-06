@@ -122,6 +122,24 @@ main:
     add_description: Add your notes on any thought that reflating your mood
     record_button: Record voice note
 
+  store:
+    title: Fitness Store
+    categories_title: Categories
+    categories:
+      "0": Clothes
+      "1": Shoes
+      "2": Bags
+      "3": Equipment
+    hot_selling_title: Hot Selling
+    recommends_title: Recommended for you
+    items:
+      "0": Dumbbell Weight
+      "1": Yoga Mat
+      "2": Chuck 70 Vintage
+      "3": Foam Roller
+      "4": Skipping Rope
+      "5": Yoga Mat
+
 
 profile:
   goals_title: My goals

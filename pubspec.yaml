@@ -48,6 +48,7 @@ flutter:
     - assets/images/challenges/
     - assets/images/workouts/
     - assets/images/moods/
+    - assets/images/items/
 
 
 flutter_launcher_icons:
