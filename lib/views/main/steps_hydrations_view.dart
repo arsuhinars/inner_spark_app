@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:inner_spark_app/models/styles/radio_tile_style.dart';
 import 'package:inner_spark_app/theme.dart';
 import 'package:inner_spark_app/views/calendar_line.dart';
@@ -86,6 +85,7 @@ class _StepsHydrationsViewState extends State<StepsHydrationsView>
         SizedBox(
           height: 320.0,
           child: TabBarView(
+            physics: const NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: const [_StepsView(), _HydrationView()],
           ),

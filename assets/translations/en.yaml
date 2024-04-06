@@ -104,6 +104,24 @@ main:
   progress:
     title: Steps & Hydration Tracker
 
+  mood:
+    title: Mood Tracker
+    state_title: How would you describe your mood?
+    state_description: Select mood that reflects the most how you are feeling at this moment.
+    reason_title: What’s reason making you feel this way?
+    reason_description: Select reasons that reflated your emotions
+    reasons:
+      "1": Family
+      "2": Self-esteem
+      "3": Work
+      "4": Weather
+      "5": Sleep
+      "6": Food
+      "7": Social
+    add_title: Anything you want to add?
+    add_description: Add your notes on any thought that reflating your mood
+    record_button: Record voice note
+
 
 profile:
   goals_title: My goals
@@ -128,6 +146,7 @@ shared:
   signup_google: SIGN UP WITH GOOGLE
   skip: SKIP
   continue: CONTINUE
+  save: Save
 
   name_field_label: YOUR NAME
   email_field_label: YOUR EMAIL ADDRESS
@@ -201,6 +220,13 @@ shared:
     "2":
       title: Glutes & Quads
       description: HIIT workout
+
+  moods:
+    angry: Angry
+    sad: Sad
+    neutral: Neutral
+    calm: Calm
+    excited: Excited
 
 
 validation:

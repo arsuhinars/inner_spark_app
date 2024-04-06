@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:inner_spark_app/router.dart';
@@ -13,7 +15,16 @@ class App extends StatelessWidget {
       theme: theme.themeData,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
+      scrollBehavior: _AppScrollBehavior(),
       locale: context.locale,
     );
   }
+}
+
+class _AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
