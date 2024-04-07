@@ -213,6 +213,7 @@ class _HomeWorkoutView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildProgressBox(theme.textTheme, theme.colorScheme),
           Column(
@@ -314,7 +315,7 @@ class _HomeWorkoutView extends StatelessWidget {
     );
 
     return SizedBox(
-      width: 120.0,
+      width: 140.0,
       height: 60.0,
       child: Material(
         borderRadius: BorderRadius.circular(16.0),
@@ -352,12 +353,10 @@ class _HomeWorkoutView extends StatelessWidget {
   }
 
   Widget _buildMoodBox(TextTheme textTheme, ColorScheme colorScheme) {
-    final textStyle = textTheme.bodyMedium!.copyWith(
-      color: orangeColor,
-    );
+    final textStyle = textTheme.bodyMedium!.copyWith(color: orangeColor);
 
     return SizedBox(
-      width: 120.0,
+      width: 140.0,
       height: 60.0,
       child: Material(
         shape: RoundedRectangleBorder(
@@ -369,13 +368,17 @@ class _HomeWorkoutView extends StatelessWidget {
           onTap: () => (),
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 12.0,
+              horizontal: 8.0,
               vertical: 4.0,
             ),
             child: Row(
               children: [
                 Expanded(
-                  child: Text('shared.todays_mood'.tr(), style: textStyle),
+                  child: Text(
+                    'shared.todays_mood'.tr(),
+                    style: textStyle,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const Icon(Icons.mood, color: orangeColor, size: 40.0)
               ],
@@ -392,7 +395,7 @@ class _HomeWorkoutView extends StatelessWidget {
     );
 
     return SizedBox(
-      width: 120.0,
+      width: 140.0,
       height: 60.0,
       child: Material(
         color: colorScheme.secondary,

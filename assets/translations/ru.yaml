@@ -84,7 +84,7 @@ main:
     workouts_types:
       weightlift: Поднятие тяжестей
       yoga: Йога
-      cardio: Кардиотренировка
+      cardio: Кардио тренировка
       jogging: Пробежка
     points_filter: Просмотр по очкам
     points_label: < {} очков
@@ -185,7 +185,7 @@ shared:
   steps: Шаги
   todays_mood: Состояние
   water: Вода
-  water_ml: "{}мл."
+  water_ml: "{} мл."
   x_minutes: "{} мин."
   x_points: "{} очков"
   x_steps: "{} шагов"
@@ -207,7 +207,7 @@ shared:
     jogging: Пробежка
     walking: Ходьба
     weightlift: Поднятие тяжестей
-    cardio: Кардиотренировки
+    cardio: Кардио тренировки
     yoga: Йога
     other: Другое
 

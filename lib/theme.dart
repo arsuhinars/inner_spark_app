@@ -56,7 +56,7 @@ final primaryRadioTileStyle = RadioTileStyle(
   ),
 );
 final secondaryRadioTileStyle = RadioTileStyle(
-  padding: const EdgeInsets.all(16.0),
+  padding: const EdgeInsets.all(8.0),
   normalColor: onBackground,
   selectedColor: secondaryColor,
   radioColor: darkColor,
