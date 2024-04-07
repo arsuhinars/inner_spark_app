@@ -2,136 +2,135 @@ startup:
   title: InnerSpark
   tips:
     "0":
-      title: WORKOUTS
+      title: ТРЕНИРОВКИ
       body: >
-        Embrace the strength within as you embark on a journey of self-discovery
-        through invigorating workouts. Fuel your body and find harmony in every
-        movement.
+        Почувствуйте внутреннюю силу, отправляясь в путешествие к самопознанию с помощью бодрящих тренировок.
+        Подпитывайте свое тело и находите гармонию в каждом движении.
     "1":
-      title: MEDITATIONS
+      title: МЕДИТАЦИИ
       body: >
-        In the tranquil sanctuary of your mind, find solace and serenity. Let
-        each breath be a reminder of your inner light. Through mindfulness,
-        unlock the path to inner peace and self-love.
+        В спокойном убежище своего разума найдите утешение и безмятежность.
+        Пусть каждый вдох будет напоминанием о вашем внутреннем свете.
+        Благодаря осознанности вы откроете путь к внутреннему покою и любви
+        к себе.
     "2":
-      title: MOOD TRACKER
+      title: ТРЕКЕР НАСТРОЕНИЯ
       body: >
-        Track the rhythm of your emotions, for they are the waves that shape
-        your journey. Embrace balance, for within it lies the key to self-love
-        and well-being.
+        Следите за ритмом своих эмоций, ведь именно они формируют ваше путешествие. Соблюдайте баланс, ведь в нем\
+        кроется ключ к любви к себе и благополучию.
 
 
 signup:
-  title_1: Welcome to
+  title_1: Добро пожаловать в
   title_2: InnerSpark
-  already_signup: Already have an account?
+  already_signup: У вас уже есть аккаунт?
 
 tabs:
   goal:
-    title: WHAT IS YOUR FITNESS GOAL?
+    title: КАКОВА ВАША ЦЕЛЬ В ФИТНЕСЕ?
   
   gender:
-    title: WHAT IS YOUR GENDER?
+    title: КАКОГО ВЫ ПОЛА?
   
   age:
-    title: WHAT IS YOUR AGE?
+    title: СКОЛЬКО ВАМ ЛЕТ?
   
   level:
-    title: HOW WOULD YOU RATE YOUR FITNESS LEVEL?
+    title: КАК БЫ ВЫ ОЦЕНИЛИ СВОЙ УРОВЕНЬ ФИЗИЧЕСКОЙ ПОДГОТОВКИ?
 
   preferences:
-    title: DO YOU HAVE SPECIFIC EXERCISE PREFERENCE?
+    title: ЕСТЬ ЛИ У ВАС КАКИЕ-ТО ОСОБЫЕ ПРЕДПОЧТЕНИЯ В УПРАЖНЕНИЯХ?
 
 
 login:
-  title: LOG IN
+  title: ВОЙТИ
 
 
 signup_email:
-  title: SIGN UP WITH EMAIL
+  title: ЗАРЕГИСТРИРОВАТЬСЯ С ПОМОЩЬЮ ПОЧТЫ
 
 
 main:
-  home_title: Home
-  workouts_title: Workouts
-  meditations_title: Meditations
-  steps_hydration_title: Progress
-  mood_title: Mood
-  store_title: Store
+  home_title: Главная
+  workouts_title: Тренировки
+  meditations_title: Медитации
+  steps_hydration_title: Прогресс
+  mood_title: Настроение
+  store_title: Магазин
 
-  user_greet: "Hello, "
-  user_points: "{} points"
+  user_greet: "Привет, "
+  user_points: "{} очков"
 
   home:
-    challenges: Challenges
-    schedule: My schedule
+    challenges: Испытания
+    schedule: Мое расписание
     tasks:
       "0":
-        title: Morning Exercise
-        description: Go to the workout
+        title: Утренняя зарядка
+        description: Сходите на тренировку
       "1":
-        title: Recognize your emotions
-        description: Go to the tracker
+        title: Осознайте свои эмоции
+        description: Перейти к трекеру
       "2":
-        title: Meet your step goal
-        description: Go to the tracker
-    workout_progress: Workout progress
-    workout_exercises_left: "{} exercises left"
-    recommendations: Recommendations
+        title: Достигните своей главной цели
+        description: Перейти к трекеру
+    workout_progress: Ход тренировки
+    workout_exercises_left: "{} упражнений осталось"
+    recommendations: Рекомендации
   
   workouts:
-    filter: Filter Workouts
-    workout_type_filter: Workout Type
+    filter: Фильтр тренировок
+    workout_type_filter: Тип тренировок
     workouts_types:
-      weightlift: Weightlift
-      yoga: Yoga
-      cardio: Cardio
-      jogging: Jogging
-    points_filter: Browse by points
-    points_label: < {} points
-    body_parts_filter: Body parts
+      weightlift: Поднятие тяжестей
+      yoga: Йога
+      cardio: Кардиотренировка
+      jogging: Пробежка
+    points_filter: Просмотр по очкам
+    points_label: < {} очков
+    body_parts_filter: Части тела
     body_parts:
-      upper_body: Upper Body
-      lower_body: Lower Body
-      full_body: Full Body
-    duration_filter: Workout Duration / Minutes
-    sort_type: Sort by
+      upper_body: Верхняя часть тела
+      lower_body: Нижняя часть тела
+      full_body: Все тело
+    duration_filter: Длительность тренировок / минуты
+    sort_type: Сортировать по
     sort:
-      latest: Latest
-      popular: Popular
-      oldest: Oldest
+      latest: Новым
+      popular: Популярным
+      oldest: Старым
   
   progress:
-    title: Steps & Hydration Tracker
+    title: Отслеживание шагов и гидратации
 
   mood:
-    title: Mood Tracker
-    state_title: How would you describe your mood?
-    state_description: Select mood that reflects the most how you are feeling at this moment.
-    reason_title: What’s reason making you feel this way?
-    reason_description: Select reasons that reflated your emotions
+    title: Трекер настроения
+    state_title: Как бы вы описали свое настроение?
+    state_description: Выберите настроение, которое в наибольшей степени отражает то, что вы чувствуете в данный момент.
+    reason_title: По какой причине вы так себя чувствуете?
+    reason_description: Выберите причины, которые связывают ваши эмоции
     reasons:
-      "1": Family
-      "2": Self-esteem
-      "3": Work
-      "4": Weather
-      "5": Sleep
-      "6": Food
-      "7": Social
-    add_title: Anything you want to add?
-    add_description: Add your notes on any thought that reflating your mood
-    record_button: Record voice note
+      "1": Семья
+      "2": Самооценка
+      "3": Работа
+      "4": Погода
+      "5": Сон
+      "6": Еда
+      "7": Общество
+    add_title: Вы хотите что-нибудь добавить?
+    add_description: Добавляйте свои заметки к любой мысли, которая отражает ваше настроение.
+    record_button: Запись голосовой заметки
 
   store:
-    title: Fitness Store
-    categories_title: Categories
+    title: Фитнес-магазин
+    categories_title: Категории
     categories:
-      "0": Clothes
-      "1": Shoes
-      "2": Bags
-      "3": Equipment
-    hot_selling_title: Hot Selling
-    recommends_title: Recommended for you
+      "0": Одежда
+      "1": Обувь
+      "2": Сумки
+      "3": Оборудование
+    hot_selling_title: Горячая распродажа
+    recommends_title: Рекомендуется для вас
     items:
       "0": Dumbbell Weight
       "1": Yoga Mat
@@ -142,112 +141,113 @@ main:
 
 
 profile:
-  goals_title: My goals
-  profile_title: My profile
+  goals_title: Мои цели
+  profile_title: Мой профиль
   goals:
-    "1": To gain muscles
-    "2": 10,000 steps per day
-    "3": 1,500ml of water per day
-    "4": Daily mindfulness practice
+    "1": Нарастить мышцы
+    "2": 10,000 шагов в день
+    "3": 1,500мл. воды в день
+    "4": Ежедневная практика осознанности
 
 
 workout:
-  start: Get started
-  add_to_schedule: Add to my schedule
+  start: Начать
+  add_to_schedule: Добавить в мое расписание
 
 
 shared:
-  login: LOG IN
-  signup: SIGN UP
-  signup_phone: SIGN UP WITH PHONE
-  signup_email: SIGN UP WITH EMAIL
-  signup_google: SIGN UP WITH GOOGLE
-  skip: SKIP
-  continue: CONTINUE
-  save: Save
+  login: ВОЙТИ
+  signup: ЗАРЕГИСТРИРОВАТЬСЯ
+  signup_phone: ЗАРЕГИСТРИРОВАТЬСЯ ПО ТЕЛЕФОНУ
+  signup_email: ЗАРЕГИСТРИРОВАТЬСЯ ПО ПОЧТЕ
+  signup_google: ЗАРЕГИСТРИРОВАТЬСЯ ЧЕРЕЗ GOOGLE
+  skip: ПРОПУСТИТЬ
+  continue: ПРОДОЛЖИТЬ
+  save: Сохранить
 
-  name_field_label: YOUR NAME
-  email_field_label: YOUR EMAIL ADDRESS
-  password_field_label: YOUR PASSWORD
-  fitness_level_field_label: YOUR FITNESS LEVEL
-  exercise_preference_field_label: YOUR EXERCISE PREFERENCE
+  name_field_label: ВАШЕ ИМЯ
+  email_field_label: ВАШ EMAIL АДРЕС
+  password_field_label: ВАШ ПАРОЛЬ
+  fitness_level_field_label: ВАШ УРОВЕНЬ ФИЗИЧЕСКОЙ ПОДГОТОВКИ
+  exercise_preference_field_label: ВАШИ ПРЕДПОЧТЕНИЯ В УПРАЖНЕНИЯХ
 
   terms_of_service_agreement: >
-    By continuing you agree to accept our Terms of Service & Privacy Policy
+    Продолжая, вы соглашаетесь принять наши Условия предоставления услуг и
+    Политику конфиденциальности
 
-  gender_male: I am Male
-  gender_female: I am Female
+  gender_male: Я мужчина
+  gender_female: Я женщина
 
-  last_week: Last week
-  last_two_weeks: Last two weeks
-  last_month: Last month
+  last_week: За неделю
+  last_two_weeks: За две недели
+  last_month: За месяц
 
-  steps: Steps
-  todays_mood: Today's mood
-  water: Water
-  water_ml: "{}ml"
-  x_minutes: "{} min"
-  x_points: "{} points"
-  x_steps: "{} steps"
-  average: Average
+  steps: Шаги
+  todays_mood: Сегодняшнее настроение
+  water: Вода
+  water_ml: "{}мл."
+  x_minutes: "{} мин."
+  x_points: "{} очков"
+  x_steps: "{} шагов"
+  average: В среднем
 
   goals:
-    be_active: I want to be active
-    be_strong: I want to be strong
-    lose_weight: I want to lose weight1
+    be_active: Я хочу быть активным
+    be_strong: Я хочу быть сильным
+    lose_weight: Я хочу похудеть
 
   fitness_levels:
-    novice: Novice
-    beginner: Beginner
-    intermediate: Intermediate
-    advanced: Advanced
-    athlete: Athlete
+    novice: Новичок
+    beginner: Начинающий
+    intermediate: Средний
+    advanced: Продвинутый
+    athlete: Спортсмен
   
   exercise_preferences:
-    jogging: Jogging
-    walking: Walking
-    weightlift: Weightlift
-    cardio: Cardio
-    yoga: Yoga
-    other: Other
+    jogging: Пробежка
+    walking: Ходьба
+    weightlift: Поднятие тяжестей
+    cardio: Кардиотренировки
+    yoga: Йога
+    other: Другое
 
   challenge:
     "1":
-      title: Morning Energizer
+      title: Утренний заряд бодрости
       description: >
-        Kickstart your day with energizing workouts to awaken your body and
-        mind. Get a new routine each day for a productive start!
+        Начните свой день с энергичных тренировок, которые разбудят ваше тело и
+        разум. Составляйте новый распорядок дня для продуктивного начала!
     "2":
-      title: Mindful Moments
+      title: Моменты осознанности
       description: >
-        Immerse yourself in daily meditations to reduce stress and enhance
-        mindfulness. Find inner peace in just 14 days!
+        Погрузитесь в ежедневные медитации, чтобы уменьшить стресс и повысить
+        осознанность. Обретите внутренний покой всего за 14 дней!
     "3":
-      title: Flexibility Fusion
+      title: Слияние гибкости
       description: >
-        Improve flexibility and mobility in 21 days with guided stretching
-        routines!
+        Улучшите гибкость и подвижность за 21 день с помощью управляемых
+        упражнений на растяжку!
   
   workouts:
     "0":
-      title: Muscle Building
-      description: Full Body
+      title: Наращивание мышечной массы
+      description: Все тело
     "1":
-      title: Strength & Endurance
-      description: Full Body
+      title: Сила и выносливость
+      description: Все тело
     "2":
-      title: Glutes & Quads
-      description: HIIT workout
+      title: Ягодичные мышцы и квадрицепсы
+      description: Тренировка HIIT
 
   moods:
-    angry: Angry
-    sad: Sad
-    neutral: Neutral
-    calm: Calm
-    excited: Excited
+    angry: Злой
+    sad: Грустный
+    neutral: Нейтральный
+    calm: Спокойный
+    excited: Воодушевленный
 
 
 validation:
-  empty_field: This field is required
-  invalid_email: Invalid email address
-  too_short_password: Password must contain at least {} characters
+  empty_field: Это поле является обязательным
+  invalid_email: Неверный адрес электронной почты
+  too_short_password: Пароль должен содержать не менее {} символов
