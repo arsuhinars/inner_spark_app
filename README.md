@@ -4,4 +4,4 @@
 
 - [Демонстрация]()
 - [Презентация]()
-- [Скачать для Android](./app-release.apk)
+- [Скачать для Android](https://gitverse.ru/api/repos/arsuhinars/inner_spark_app/raw/branch/main/app-release.apk)
