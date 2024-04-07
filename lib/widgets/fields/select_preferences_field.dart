@@ -18,8 +18,8 @@ class SelectPreferencesField extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
-      mainAxisSpacing: 8.0,
-      crossAxisSpacing: 8.0,
+      mainAxisSpacing: 6.0,
+      crossAxisSpacing: 6.0,
       shrinkWrap: true,
       children: ExercisePreference.values.map(_buildRadioTile).toList(),
     );

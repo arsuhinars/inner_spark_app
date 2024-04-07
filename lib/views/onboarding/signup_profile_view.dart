@@ -62,7 +62,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
     return Skeletonizer(
       enabled: user.isLoading,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16.0, 48.0, 16.0, 24.0),
+        padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -79,7 +79,7 @@ class _SignupProfileViewState extends ConsumerState<SignupProfileView>
                 onContinuePressed: () => _onContinuePressed(),
               ),
             ),
-            const SizedBox(height: 24.0),
+            const SizedBox(height: 12.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

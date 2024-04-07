@@ -56,7 +56,10 @@ class _StartupViewBody extends StatelessWidget {
   }
 
   Widget _buildContent(
-      BuildContext context, TextTheme textTheme, ColorScheme colorScheme) {
+    BuildContext context,
+    TextTheme textTheme,
+    ColorScheme colorScheme,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 16.0),
       child: Column(
@@ -153,7 +156,7 @@ class _StartupViewTipsState extends State<_StartupViewTips> {
             color: darkColor.withAlpha(20),
             borderRadius: BorderRadius.circular(16.0),
           ),
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
           child: PageView.builder(
             itemCount: tipsCount,
             controller: _pageController,

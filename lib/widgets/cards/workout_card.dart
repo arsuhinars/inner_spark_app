@@ -10,7 +10,7 @@ class WorkoutCard extends StatelessWidget {
     required this.onTap,
   });
 
-  static const height = 140.0;
+  static const height = 150.0;
 
   final Workout? workout;
   final void Function() onTap;
@@ -60,10 +60,13 @@ class WorkoutCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                workout.titleKey.tr(),
-                style: textTheme.titleMedium!.copyWith(
-                  color: workout.foregroundColor,
+              SizedBox(
+                width: 200.0,
+                child: Text(
+                  workout.titleKey.tr(),
+                  style: textTheme.titleMedium!.copyWith(
+                    color: workout.foregroundColor,
+                  ),
                 ),
               ),
               Text(workout.descriptionKey.tr(), style: bodyMedium),

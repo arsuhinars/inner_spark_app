@@ -5,7 +5,7 @@ import 'package:inner_spark_app/theme.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -16,7 +16,7 @@ class SignupView extends StatelessWidget {
 
 class _SignupViewBody extends StatelessWidget {
   const _SignupViewBody();
-  
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -35,47 +35,33 @@ class _SignupViewBody extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            colorScheme.secondary, colorScheme.background
-          ]
-        )
-      ),
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [colorScheme.secondary, colorScheme.background])),
     );
   }
 
-  Widget _buildContent(BuildContext context, textTheme, ColorScheme colorScheme) {
+  Widget _buildContent(
+      BuildContext context, textTheme, ColorScheme colorScheme) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 80.0, horizontal: 24.0
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildTitleText(textTheme),
-          _buildButtons(context),
-          _buildAlreadySignupText(context, textTheme, colorScheme)
-        ]
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 24.0),
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        _buildTitleText(textTheme),
+        _buildButtons(context),
+        _buildAlreadySignupText(context, textTheme, colorScheme)
+      ]),
     );
   }
 
   Widget _buildTitleText(TextTheme textTheme) {
-    final span = TextSpan(
-      children: [
-        TextSpan(
+    final span = TextSpan(children: [
+      TextSpan(
           text: 'signup.title_1'.tr(),
-          style: titleStyle.copyWith(
-            fontWeight: FontWeight.w300
-          )
-        ),
-        TextSpan(
-          text: '\n${'signup.title_2'.tr()}', style: titleStyle
-        )
-      ]
-    );
+          style: titleStyle.copyWith(fontWeight: FontWeight.w300)),
+      TextSpan(text: '\n${'signup.title_2'.tr()}', style: titleStyle)
+    ]);
 
     return Text.rich(span, textAlign: TextAlign.center);
   }
@@ -92,7 +78,8 @@ class _SignupViewBody extends StatelessWidget {
               const WidgetSpan(child: Icon(Icons.phone_outlined)),
               const WidgetSpan(child: SizedBox(width: 8.0)),
               TextSpan(text: 'shared.signup_phone'.tr())
-            ])
+            ]),
+            textAlign: TextAlign.center,
           ),
         ),
         const SizedBox(height: 10.0),
@@ -104,7 +91,8 @@ class _SignupViewBody extends StatelessWidget {
               const WidgetSpan(child: Icon(Icons.mail_outlined)),
               const WidgetSpan(child: SizedBox(width: 8.0)),
               TextSpan(text: 'shared.signup_email'.tr())
-            ])
+            ]),
+            textAlign: TextAlign.center,
           ),
         ),
         const SizedBox(height: 10.0),
@@ -116,21 +104,22 @@ class _SignupViewBody extends StatelessWidget {
               const WidgetSpan(child: Icon(Icons.login_outlined)),
               const WidgetSpan(child: SizedBox(width: 8.0)),
               TextSpan(text: 'shared.signup_google'.tr())
-            ])
+            ]),
+            textAlign: TextAlign.center,
           ),
         )
       ],
     );
   }
 
-  Widget _buildAlreadySignupText(BuildContext context, textTheme, ColorScheme colorScheme) {
+  Widget _buildAlreadySignupText(
+      BuildContext context, textTheme, ColorScheme colorScheme) {
     return Column(
       children: [
         const Text('signup.already_signup').tr(),
         InkWell(
-          onTap: () => _onLoginPressed(context),
-          child: Text('shared.login', style: linkStyle).tr()
-        )
+            onTap: () => _onLoginPressed(context),
+            child: Text('shared.login', style: linkStyle).tr())
       ],
     );
   }

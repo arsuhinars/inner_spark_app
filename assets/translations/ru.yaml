@@ -52,10 +52,10 @@ signup_email:
 
 main:
   home_title: Главная
-  workouts_title: Тренировки
+  workouts_title: Занятия
   meditations_title: Медитации
   steps_hydration_title: Прогресс
-  mood_title: Настроение
+  mood_title: Состояние
   store_title: Магазин
 
   user_greet: "Привет, "
@@ -128,7 +128,7 @@ main:
       "0": Одежда
       "1": Обувь
       "2": Сумки
-      "3": Оборудование
+      "3": Инвентарь
     hot_selling_title: Горячая распродажа
     recommends_title: Рекомендуется для вас
     items:
@@ -183,7 +183,7 @@ shared:
   last_month: За месяц
 
   steps: Шаги
-  todays_mood: Сегодняшнее настроение
+  todays_mood: Состояние
   water: Вода
   water_ml: "{}мл."
   x_minutes: "{} мин."

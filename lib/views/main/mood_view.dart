@@ -330,7 +330,7 @@ class _MoodPickerState extends State<_MoodPicker> {
             children: [
               Image.asset(image, alignment: Alignment.topCenter),
               const SizedBox(height: 16.0),
-              Text(text)
+              Text(text, textAlign: TextAlign.center)
             ],
           ),
         ),
